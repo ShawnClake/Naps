@@ -1,6 +1,7 @@
 package com.shawnclake.auth;
 
-public class User {
+public class User
+{
 
     private int id;
     private String username;
@@ -15,8 +16,8 @@ public class User {
         username = "";
         password = "";
         email = "";
-        stats = "";
-        settings = "";
+        stats = "{}";
+        settings = "{}";
     }
 
     public void setUser(int id, String username, String password, String email, String stats, String settings) {
@@ -26,6 +27,18 @@ public class User {
         this.email = email;
         this.stats = stats;
         this.settings = settings;
+    }
+
+    public String toString()
+    {
+        String user = "";
+        user += getId() + "|";
+        user += getUsername() + "|";
+        user += getPassword() + "|";
+        user += getEmail() + "|";
+        user += getStats() + "|";
+        user += getSettings();
+        return user;
     }
 
     public int getId() {
@@ -76,3 +89,4 @@ public class User {
         this.settings = settings;
     }
 }
+

@@ -8,6 +8,8 @@ public class UserManager {
 
     public void createUser(User user)
     {
+        FileInput.openFile("src\\com\\shawnclake\\auth\\tests\\file.txt");
+        List<String> lines = FileInput.getRemainderOfFile();
 
     }
 
