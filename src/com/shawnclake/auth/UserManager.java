@@ -1,6 +1,7 @@
 package com.shawnclake.auth;
 
 import com.shawnclake.io.FileInput;
+import com.shawnclake.io.FileOutput;
 
 import java.util.List;
 
@@ -8,8 +9,14 @@ public class UserManager {
 
     public void createUser(User user)
     {
+
         FileInput.openFile("src\\com\\shawnclake\\auth\\tests\\file.txt");
         List<String> lines = FileInput.getRemainderOfFile();
+        FileInput.forceCloseFile();
+
+
+        lines.add(user.toString());
+        FileOutput.writeFile("src\\com\\shawnclake\\auth\\tests\\file.txt", lines);
 
     }
 
