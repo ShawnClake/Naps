@@ -19,7 +19,7 @@ public class User {
         settings = "";
     }
 
-    public User(int id, String username, String password, String email, String stats, String settings) {
+    public void setUser(int id, String username, String password, String email, String stats, String settings) {
         this.id = id;
         this.username = username;
         this.password = password;
