@@ -32,11 +32,11 @@ public class User
     public String toString()
     {
         String user = "";
-        user += getId() + "|";
-        user += getUsername() + "|";
-        user += getPassword() + "|";
-        user += getEmail() + "|";
-        user += getStats() + "|";
+        user += getId() + "-";
+        user += getUsername() + "-";
+        user += getPassword() + "-";
+        user += getEmail() + "-";
+        user += getStats() + "-";
         user += getSettings();
         return user;
     }

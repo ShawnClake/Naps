@@ -1,5 +1,7 @@
 package com.shawnclake.ui;
 
+import com.shawnclake.auth.User;
+import com.shawnclake.auth.UserManager;
 import com.shawnclake.io.FileInput;
 
 import java.util.List;
@@ -14,6 +16,23 @@ public class Main {
         {
             System.out.println(temp);
         }
+
+        FileInput.forceCloseFile();
+
+
+        UserManager manager = new UserManager();
+
+        System.out.println(manager.readUser(2).toString());
+
+        //manager.deleteUser(3);
+
+
+
+        User user = new User();
+        user.setUser(2, "jen", "test123", "test@burger.com", "{}", "{}");
+
+        manager.updateUser(user);
+
     }
 
 }

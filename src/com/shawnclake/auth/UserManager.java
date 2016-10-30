@@ -30,7 +30,7 @@ public class UserManager {
 
         for(String line : lines)
         {
-            String[] fields = line.split("|");
+            String[] fields = line.split("-");
             if(Integer.parseInt(fields[0]) == id)
             {
                 user.setUser(Integer.parseInt(fields[0]), fields[1], fields[2], fields[3], fields[4], fields[5]);
