@@ -9,7 +9,8 @@ public class UserManager {
 
     public User readUser()
     {
-
+        User u = new User();
+        return u;
     }
 
     public void updateUser()
