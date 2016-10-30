@@ -58,14 +58,30 @@ public class UserManager {
 
         FileInput.forceCloseFile();
 
-        lines.remove(i);
+        lines.set(i, user.toString());
 
         FileOutput.writeFile("src\\com\\shawnclake\\auth\\tests\\file.txt", lines);
     }
 
     public void deleteUser(int id)
     {
+        FileInput.openFile("src\\com\\shawnclake\\auth\\tests\\file.txt");
+        List<String> lines = FileInput.getRemainderOfFile();
 
+        int i =0;
+        for(; i < lines.size(); i++)
+        {
+            String[] fields = lines.get(i).split("|");
+            if(Integer.parseInt(fields[0]) == id)
+                break;
+
+        }
+
+        FileInput.forceCloseFile();
+
+        lines.remove(i);
+
+        FileOutput.writeFile("src\\com\\shawnclake\\auth\\tests\\file.txt", lines);
     }
 
 }
