@@ -50,7 +50,7 @@ public class UserManager {
         int i =0;
         for(; i < lines.size(); i++)
         {
-            String[] fields = lines.get(i).split("|");
+            String[] fields = lines.get(i).split("-");
             if(Integer.parseInt(fields[0]) == user.getId())
                 break;
 
@@ -71,7 +71,7 @@ public class UserManager {
         int i =0;
         for(; i < lines.size(); i++)
         {
-            String[] fields = lines.get(i).split("|");
+            String[] fields = lines.get(i).split("-");
             if(Integer.parseInt(fields[0]) == id)
                 break;
 
@@ -92,7 +92,7 @@ public class UserManager {
         int id = 0;
         for(int i = 0; i < lines.size(); i++)
         {
-            String[] fields = lines.get(i).split("|");
+            String[] fields = lines.get(i).split("-");
             id = Integer.parseInt(fields[0]);
         }
 
