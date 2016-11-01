@@ -1,5 +1,10 @@
-import java.util.Scanner;
 
+//In Main you will have to initialize a reminders(collection) called listOfReminders and a static Remind object called remindObject, and if that collection is not empty, then you will need to periodically call Remindobject.start(reminders.check()). To access the Reminder UI, 
+//you must call ReminderUI();
+
+
+import java.util.Scanner;
+import java.util.Timer;
 
 class Reminder
 {
@@ -73,18 +78,18 @@ class Reminders
 		
 	}
 	
-	public Reminder check()		//Checks if any of the current reminders have the same time as the current date, if yes returns the first reminder found, else returns null
+	public void check()		//Checks if any of the current reminders have the same time as the current date, if yes returns the first reminder found, else returns null
 	{
 		Date currentTime = new Date();	//Praying this gives the current time
 		
 		for(int i = 0; i < reminders.count(); i++)
 		{
 			if(reminders[i].getTime() == currentTime)
-				return reminders[i];
+				 remindObject.start(reminders[i]);
 			
 		}
 		
-		return null;
+		
 	}
 	
 	
@@ -119,12 +124,102 @@ class Reminders
 
 class Remind		//If you want to add a reminder, the user calls Remind.setType, the user inputs all the values and then calls add in Reminders(collection).
 {					// 
+	private enum type{VIBRATION, SOUND, SOUND_VIBRATION} 
 
+	Reminder reminderRemind;
 
+	
+	public Remind()
+	{
+		type = VIBRATION;		//Vibration is the default
+		
+	}
 
+	public void setType(cType)
+	{
+		type = cType;
+	}
+	
+	public void getType()
+	{
+		return type;
+	}
+	
+	public void start()
+	{
+			Scanner in = new Scanner(System.in);
+	
+			if(type == VIBRATION)
+				ACTIVATE_VIBRATION_MODE();
+			else if(type == SOUND)
+				ACTIVATE_BEEP-BEEP_MODE();
+			else
+			{
+				ACTIVATE_BEEP-BEEP_MODE();
+				ACTIVATE_VIBRATION_MODE();
+			}
+			
+			
+			System.out.println(reminderRemind.getName());
+			System.out.println(reminderRemind.getDescription());
+			System.out.println("Alarm will stop in 1 minute. Press s to stop, or t to snooze for 1 minute.");
+		
+		
+			
+			
+			
+			int interval = 60000; // 60 sec
+				Date timeToRun = new Date(System.currentTimeMillis() + interval);
+				Timer timer = new Timer();
+    
+			timer.schedule(new TimerTask() {
+            public void run() {
+               stop();
+			   return;				//Does this just return from the run(), hmmmmm, I dunno
+           }
+       }, timeToRun);
+			
+			char choice = in.next();
+			
+			while(c != 's' && c != 't' && )
+			{
+				System.out.println("Press s to stop, or t to snooze for 1 minute.");
+				
+			}
+			
+			if(c == 's')
+			{
+				stop();
+				
+				
+			} else
+			{
+				stop();
+				snooze();
+			}
+	}
 
+	public void stop()
+	{
+		DEACTIVATE_ALL_VIBRATIONS_AND_SOUNDS();
+		
+	}
 
+	public void snooze()
+	{
+	
+		int interval = 60000; // 60 sec
+				Date timeToRun = new Date(System.currentTimeMillis() + interval);
+				Timer timer = new Timer();
+    
+			timer.schedule(new TimerTask() {
+            public void run() {
+               start();
+			   return;				
+           }
 
+	
+	}
 
 }
 
