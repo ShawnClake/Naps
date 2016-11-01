@@ -32,7 +32,7 @@ public class UI {
 		///////////////////////////////////Login Screen/////////////////////////////////////
 		//sign in or register here
 		//this calls the auth classes
-		System.out.println("Welcome to NAPS...");
+		System.out.println("Welcome to NAPS by SSUJ...");
 		System.out.println("Would you like to login or register for a new account?");
 		choice = in.nextLine();
 		choice = choice.toLowerCase();
