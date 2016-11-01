@@ -1,4 +1,4 @@
-package project;
+package com.shawnclake.graph;
 
 /*****************************************************************************
  * Graph Class
