@@ -3,13 +3,55 @@ import java.util.Scanner;
 
 class Reminder
 {
+	
+	private int id;		//THe picture only has a d, assummed id. I'm gonna say that this contains a unique id. A, primary key, you could say
+	private string name;
+	private Date time;
+	private string description;
 
+		public Reminder(string cName, Date cTime, strin cDescription, int cId)
+		{
+			name = cName;
+			time = cTime;
+			description = cDescription;
+			id = cId;
+		}
 
+		public Date getTime()
+		{
+			return time;	
+		}
 
+		public string getName()
+		{
+			return name;
+		}
 
+		public string getDescription()
+		{
+			return description;
+		}
+		
+		public int getId()
+		{
+			return id;
 
+		}
+		
+		public void setTime(Date cTime)
+		{
+			time = cTime;	
+		}
 
+		public void setName(string cName)
+		{
+			name = cName;
+		}
 
+		public void setDescription(string cDescription)
+		{
+			description = cDescription;	
+		}
 
 
 
@@ -22,12 +64,52 @@ class Reminder
 
 class Reminders
 {
+	private ArrayList<Reminder> reminders;
 
+	public Reminders()
+	{
+		reminders = new ArrayList<Reminders>();
+		
+		
+	}
+	
+	public Reminder check()		//Checks if any of the current reminders have the same time as the current date, if yes returns the first reminder found, else returns null
+	{
+		Date currentTime = new Date();	//Praying this gives the current time
+		
+		for(int i = 0; i < reminders.count(); i++)
+		{
+			if(reminders[i].getTime() == currentTime)
+				return reminders[i];
+			
+		}
+		
+		return null;
+	}
+	
+	
 
+	public void addReminder(Reminder addedReminder)
+	{
+		reminders.add(addedReminder);
+		
+	}
 
-
-
-
+	public void removeReminder(int idToBeRemoved)	//The position int will have to be taken
+	{
+		for(int i = 0; i < reminders.count(); i++)
+		{
+			if(reminders[i].getId() == idToBeRemoved)
+			{
+				reminders.remove(i);
+				return true;	//The reminder was sucessfully removed
+			}
+			
+		}
+		
+		return false; 	//THe reminder was not found, and hence not sucessfully removed
+		
+	}
 
 
 
@@ -48,7 +130,7 @@ class Remind		//If you want to add a reminder, the user calls Remind.setType, th
 
 
 
-function ReminderUI()
+function ReminderUI(Reminders listOfReminders)	//Passed by reference. Kinda confused how java does this. W/E make listOfReminders global then and just get rid of the parameter
 {
 	string witticisms[10];
 	
@@ -97,7 +179,7 @@ function ReminderUI()
 	{
 		case 1:
 			System.out.println("Here are the current reminders:");
-			reminders.check()		//Whatever the reminders(collection) object in main is
+			listOfReminders.check()		//Whatever the reminders(collection) object in main is
 		
 		
 			continue;
@@ -105,7 +187,8 @@ function ReminderUI()
 		case 2:
 			Remind = new Remind();
 			Date myDate;
-			Calendar cal = Calendar.getInstance();
+			TimeZone timezone = TimeZone.getTimeZone("Canada/Saskatchewan");	
+			Calendar cal = Calendar.getInstance(timezone);
 			
 			
 			System.out.println("Please enter the name of the reminder:");
@@ -131,7 +214,7 @@ function ReminderUI()
 			
 			
 			cal.set(Calendar.YEAR, entry3);
-			cal.set(Calendar.MONTH, entry4);
+			cal.set(Calendar.MONTH, entry4 - 1); //-1 b/c 0 indexed
 			cal.set(Calendar.DATE, entry5);
 			cal.set(Calendar.HOUR,entry6);
 			cal.set(Calendar.MINUTE,entry7);
@@ -139,6 +222,8 @@ function ReminderUI()
 			myDate = cal.getTime();
 			
 			//System.out.println(myDate);	//Test
+			
+			
 			
 			continue;
 		
