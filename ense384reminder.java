@@ -78,6 +78,13 @@ class Reminders
 		
 	}
 	
+	public int getCount()
+	{
+		return reminders.count();
+		
+		
+	}
+	
 	public void check()		//Checks if any of the current reminders have the same time as the current date, if yes returns the first reminder found, else returns null
 	{
 		Date currentTime = new Date();	//Praying this gives the current time
@@ -100,22 +107,39 @@ class Reminders
 		
 	}
 
-	public void removeReminder(int idToBeRemoved)	//The position int will have to be taken
+	public void removeReminder(int position)	//The position int will have to be taken
 	{
-		for(int i = 0; i < reminders.count(); i++)
+		if(position > -1 || position >= reminders.count())
 		{
-			if(reminders[i].getId() == idToBeRemoved)
-			{
-				reminders.remove(i);
-				return true;	//The reminder was sucessfully removed
-			}
-			
+			System.out.println("Error: Reminder position was not within bounds.");
+			return;
 		}
-		
-		return false; 	//THe reminder was not found, and hence not sucessfully removed
+			
+			
+		reminders.remove(position);
+		return;	//The reminder was sucessfully removed
+			
+			
 		
 	}
 
+	
+	public void printReminders()
+	{
+		for(int i = 0; i < reminders.count(); i++)
+		{
+			System.out.println("Reminder 1: " + reminders[i].getName());
+			System.out.println("Description: " + reminders[i].getDescription());
+			System.out.println("Date: " + reminders[i].getTime());
+			System.out.println("");
+			
+			
+			
+		}
+		
+		
+		
+	}
 
 
 
@@ -274,7 +298,7 @@ function ReminderUI(Reminders listOfReminders)	//Passed by reference. Kinda conf
 	{
 		case 1:
 			System.out.println("Here are the current reminders:");
-			listOfReminders.check()		//Whatever the reminders(collection) object in main is
+			listOfReminders.printReminders()		//Whatever the reminders(collection) object in main is
 		
 		
 			continue;
@@ -324,13 +348,29 @@ function ReminderUI(Reminders listOfReminders)	//Passed by reference. Kinda conf
 		
 		case 3:
 		
-		
+			listOfReminders.printReminders()
+			
+			System.out.println("");
+			System.out.println("Which reminder would you like to delete?");
+			
+			choice = in.nextInt();
+			
+			if(choice < 1 || choice > listOfReminders.getCount())
+			{
+				System.out.println("Invalid choice. Returning to reminder menu.");
+				continue;
+			}
+			
+			System.out.println("Now removing Reminder " + choice);
+			listOfReminders.removeReminder(choice - 1);
+			
 			continue;
 		
 		case 4:
 		
-		
+			exit = true;
 			continue;
+			
 			
 			
 			
