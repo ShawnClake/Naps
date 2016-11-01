@@ -5,7 +5,7 @@ import com.shawnclake.io.FileInput;
 import java.security.MessageDigest;
 
 import java.util.List;
-import java.util.date;
+import java.util.Date;
 
 /**
  * 
@@ -61,49 +61,61 @@ date	The date of records to be returned. In the format yyyy-MM-dd.
 
 public class FitBitData {
 
+	Date sleepDate; //added in for our purposes
 	boolean isMainSleep;
 	double logId;
     int efficiency; 
-    date startTime;
+    Date startTime;
     double duration;
     int minutesToFallAsleep;
     int minutesAsleep;
     int minutesAwake;
     int minutesAfterWakeup;
-    int wakeningsCount; " //deprecated by FitBit company
-    int awakeCount":0,
+    int AwakeningsCount; //deprecated by FitBit company
+    int awakeCount;
     int awakeDuration;
     int restlessCount;
     int restlessDuration;
     int timeInBed;
-    date minuteDataDate;
+    Date minuteDataDate;
     int minuteDataValue;
     
     //Getters and setters for all variables
-    public boolean getisMainSleep(){return this.isMainSleep;}
-    public void setisMainSleep(boolean setIMS){this.isMainSleep = setIMS;}
+    public void setFitBitData(Date sD, boolean setIMS, double li, int eff, Date sT, double dur, int mTFA, int mAs, int mAw, int mAAw, int awC, int awD, int rC, int rD, int tIB, Date mDD, int mDV)
+    {this.sleepDate = sD;
+    this.isMainSleep = setIMS;
+	this.logId = li;
+    this.efficiency = eff; 
+    this.startTime = sT;
+    this.duration = dur;
+    this.minutesToFallAsleep=mTFA;
+    this.minutesAsleep=mAs;
+    this.minutesAwake=mAw;
+    this.minutesAfterWakeup=mAAw;
+    this.awakeCount=awC;
+    this.awakeDuration=awD;
+    this.restlessCount=rC;
+    this.restlessDuration=rD;
+    this.timeInBed=tIB;
+    this.minuteDataDate=mDD;
+    this.minuteDataValue=mDV;  
+    }
     
+    public boolean getisMainSleep(){return this.isMainSleep;}
+
     public double getlogId(){return this.logId;}
-    public void setlogId(double setlId){this.isMainSleep;}
     
     public boolean getisMainSleep(){return this.isMainSleep;}
-    public void setisMainSleep(boolean setIMS){this.isMainSleep;}
     
     public boolean getisMainSleep(){return this.isMainSleep;}
-    public void setisMainSleep(boolean setIMS){this.isMainSleep;}
     
     public boolean getisMainSleep(){return this.isMainSleep;}
-    public void setisMainSleep(boolean setIMS){this.isMainSleep;}
     
     public boolean getisMainSleep(){return this.isMainSleep;}
-    public void setisMainSleep(boolean setIMS){this.isMainSleep;}
     
     public boolean getisMainSleep(){return this.isMainSleep;}
-    public void setisMainSleep(boolean setIMS){this.isMainSleep;}
     
-    
-    
-    
+
 }
 
 
