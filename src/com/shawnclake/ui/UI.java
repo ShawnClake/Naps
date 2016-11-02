@@ -1,7 +1,10 @@
 package com.shawnclake.ui;
 
-import com.shawnclake.auth;
-import com.shawnclake.graph;
+import com.shawnclake.auth.Auth;
+import com.shawnclake.auth.User;
+import com.shawnclake.Fitbit;
+import com.shawnclake.graph.Graph;
+import com.shawnclake.graph.DrawGraph;
 
 import java.util.Scanner;
 /*******************************************************************************
@@ -38,7 +41,8 @@ public class UI {
 		choice = choice.toLowerCase();
 		
 		//create the current sessions user
-		User current = new User();
+		User current;
+		Auth authorize = new Auth();
 		
 		if(choice.equals("login")){
 			boolean valid = true;
@@ -50,10 +54,10 @@ public class UI {
 			System.out.print("Password: ");
 			String pass = in.nextLine();
 			
-			current = current.login(userName, pass);
+			current = authorize.login(userName, pass);
 			
 			//check if valid user
-			if(current.username.equals("")){
+			if(current.getUsername().equals("")){
 				System.out.println("Login was incorrect.");
 				System.out.println("Would you like to try again, or continue as guest?");
 				System.out.println("Please enter either 'try again' or 'continue'");
@@ -90,12 +94,12 @@ public class UI {
 			System.out.print("Enter an e-mail address: ");
 			String email = in.nextLine();
 			
-			current = current.register(username, password, email);
+			current = authorize.register(username, password, email);
 			//new user has been registered and is the current session user
 		}
 		
 		
-		////////////////MAIN LOOP///////////////////////////////////////////////////////
+		////////////////MAIN PROGRAM///////////////////////////////////////////////////////
 		///////Loop runs for the duration of the program
 		///////It will allow the user to use the reminders, fitbit, and displaying results
 		System.out.println("NAPS");
