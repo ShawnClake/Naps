@@ -1,6 +1,7 @@
 package com.shawnclake.graph;
 
 import java.util.Arrays;
+import java.util.Date;
 /*****************************************************************************
  * Graph Class
  * 
@@ -11,30 +12,35 @@ import java.util.Arrays;
  * Author: Jennifer Herasymuik
  *****************************************************************************/
 
-public class Graph<T> {
+public class Graph {
 
-	private String xlabels[];
+	private Date xlabels[];
 	private String ylabels[];
-	private T data[][];
+	private int data[][];
 
 
 	//sets the x-axis label
-	public void setXLabels(String x[]){
+	public void setXLabels(Date x[]){
 		xlabels = Arrays.copyOf(x, x.length);
 	}
 	
-	//sets the y-axis label, we have no y labels yet so this will not be used
+	//sets the y-axis labels
 	public void setYLabels(String y[]){
 		ylabels = Arrays.copyOf(y, y.length);
 	}
 	
 	//takes in an array of data points and sets the values of the data member variable
-	public void setData(T d[][]){
+	public void setData(int d[][]){
 		data = Arrays.copyOf(d, d.length);
 	}
 	
+	public void fitbitSet(Integer data[]){
+		for (int i = 0; i < data.length; i++){
+			this.data[i][0] = data[i];
+		}
+	}
 	//getters
-	public String[] getXLabels(){
+	public Date[] getXLabels(){
 		return this.xlabels;
 	}
 	public String[] getYLabels(){  //may be an integer or a date for now
