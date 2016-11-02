@@ -3,9 +3,14 @@ package com.shawnclake.ui;
 import com.shawnclake.auth.Auth;
 import com.shawnclake.auth.User;
 import com.shawnclake.FitBit.FitBitManager;
+import com.shawnclake.FitBit.FitBitVariable;
 import com.shawnclake.graph.Graph;
 import com.shawnclake.graph.DrawGraph;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 /*******************************************************************************
  * ENSE 374 Project - Naps
@@ -30,8 +35,8 @@ public class UI {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		
-		String choice; // will be used to take in the user inputs throughout the program
-		
+		String choice = null; // will be used to take in the user inputs throughout the program
+		/*
 		///////////////////////////////////Login Screen/////////////////////////////////////
 		//sign in or register here
 		//this calls the auth classes
@@ -96,7 +101,7 @@ public class UI {
 			
 			current = authorize.register(username, password, email);
 			//new user has been registered and is the current session user
-		}
+		}*/
 		
 		
 		////////////////MAIN PROGRAM///////////////////////////////////////////////////////
@@ -119,6 +124,87 @@ public class UI {
 			//fitbit class
 			//graph class
 			else if(choice.equals("data")){
+				/*some of the code below is written by Sam not Jen if you have questions ask both of them*/
+				System.out.println("Several different metrics can be viewed for your data, they include:");
+				System.out.println("1. 'efficiency' - Amount of time asleep while in bed");
+				System.out.println("2. 'startTime' - Start time of sleep cycle");
+				System.out.println("3. 'minutesToFallAsleep' - Amount of time to fall asleep");
+				System.out.println("4. 'minutesAsleep' - Amount of time asleep while in bed");
+				System.out.println("5. 'minutesAwake' - Amount of time awake while in bed");
+				System.out.println("6. 'minutesAfterWakeup' - Amount of time in bed after waking up");
+				System.out.println("7. 'awakeCount' - Number of times woken up during sleep");
+				System.out.println("8. 'awakeDuration' - Total time of all awake events");
+				System.out.println("9. 'restlessCount' - Number of times restless sleep expierenced");
+				System.out.println("10. 'restlessDuration' - Total time of all restless events");
+				System.out.println("11. 'timeInBed' - Amount of time spent in bed.");
+				
+				System.out.println("Please enter the list number for the metric you wish to view: ");
+
+		        int metricChoice = in.nextInt();
+
+				System.out.println("You view data from any period within: 2/5/2014 to 10/31/2016 ");
+				System.out.println("Please enter the Start Date in DD/MM/YYYY format:");
+				in.nextLine();
+				String stringDate = in.nextLine();
+				Date[] dateRange = new Date[2];
+				
+				DateFormat df = new SimpleDateFormat("d/M/yyyy");
+				
+				//Due to casting a try/catch statement must be used
+				try {
+					dateRange[0] = df.parse(stringDate);
+					System.out.println("Please enter the End Date in DD/MM/YYYY format:");
+					stringDate = in.nextLine();
+					dateRange[1] = df.parse(stringDate);
+	            	FitBitManager<Integer> fbmInt = new FitBitManager<Integer>();
+	            	FitBitManager<Date> fbmDate = new FitBitManager<Date>();
+
+
+					//Future task for Sam/Jen is to break UI into at least two files where the fitbit UI functionality can be seperated out and templated
+			        switch (metricChoice) {
+		            case 1:	      
+		            	Integer[] graphArray1 = fbmInt.getData(FitBitVariable.efficiency, dateRange, int.class);
+		            	break;
+		            case 2:
+		            	Date[] graphArray2 = fbmDate.getData(FitBitVariable.startTime, dateRange, Date.class);
+		                break;
+		            case 3:
+		            	Integer[] graphArray3 = fbmInt.getData(FitBitVariable.minutesToFallAsleep, dateRange, int.class);
+		                break;
+		            case 4:
+		            	Integer[] graphArray4 = fbmInt.getData(FitBitVariable.minutesAsleep, dateRange, int.class);		         
+		                break;
+		            case 5:
+		            	Integer[] graphArray5 = fbmInt.getData(FitBitVariable.minutesAwake, dateRange, int.class);		      
+		                break;
+		            case 6:
+		            	Integer[] graphArray6 = fbmInt.getData(FitBitVariable.minutesAfterWakeup, dateRange, int.class);		            	
+		                break;
+		            case 7:
+		            	Integer[] graphArray7 = fbmInt.getData(FitBitVariable.awakeCount, dateRange, int.class);
+		                break;
+		            case 8:
+		            	Integer[] graphArray8 = fbmInt.getData(FitBitVariable.awakeDuration, dateRange, int.class);
+		                break;    
+		            case 9:
+		            	Integer[] graphArray9 = fbmInt.getData(FitBitVariable.restlessCount, dateRange, int.class);
+		                break;   
+		            case 10:
+		            	Integer[] graphArray10 = fbmInt.getData(FitBitVariable.restlessDuration, dateRange, int.class);
+		                break;    
+		            case 11:
+		            	Integer[] graphArray11 = fbmInt.getData(FitBitVariable.timeInBed, dateRange, int.class);         	
+		                break;        
+		        }
+
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        
+
+				
 				
 			}
 			else if(choice.equals("quit")){
