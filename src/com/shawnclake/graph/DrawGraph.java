@@ -9,27 +9,29 @@ package com.shawnclake.graph;
  * Author: Jennifer Herasymuik
  *****************************************************************************/
 
-public class DrawGraph<T> {
+public class DrawGraph {
 	
-	private Graph<T> graph;
+	private Graph graph;
 	
 	//this function uses the graph member variable and draws out the graph
 	//for now it will print out the x and y labels, then the data points
 	public void drawGraph(){
 		String x[] = graph.getXLabels();
 		//String y[] = graph.getYLabels();
-		T d[][] = graph.getData();
+		int d[][] = graph.getData();
 		
 		//the x-labels represent the dates the user selected
 		System.out.println("X-labels");
 		System.out.println(x.toString());
-		//******we are going to ignore the ylabels for now since we have no values for these yet
+		//ylabels
+		System.out.println("Y-labels:);
+		System.out.println(y.toString());	
 		System.out.println("Data");
 		System.out.println(d.toString());
 	}
 	
 	//this functions takes in a graph, then sets the graph member variable to this graph
-	public void setGraph(Graph<T> g){
+	public void setGraph(Graph g){
 		graph.setXLabels(g.getXLabels());
 		graph.setYLabels(g.getYLabels());
 		graph.setData(g.getData());
