@@ -1,6 +1,5 @@
 package com.shawnclake.graph;
 
-import java.util.Arrays;
 /*****************************************************************************
  * DrawGraph Class
  * 
