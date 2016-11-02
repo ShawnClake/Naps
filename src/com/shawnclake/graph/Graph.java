@@ -46,7 +46,7 @@ public class Graph {
 	public String[] getYLabels(){  //may be an integer or a date for now
 		return this.ylabels;
 	}
-	public T[][] getData(){
+	public int[][] getData(){
 		return data;
 	}
 	

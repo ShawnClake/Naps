@@ -1,5 +1,6 @@
 package com.shawnclake.graph;
 
+import java.util.Date;
 /*****************************************************************************
  * DrawGraph Class
  * 
@@ -16,7 +17,7 @@ public class DrawGraph {
 	//this function uses the graph member variable and draws out the graph
 	//for now it will print out the x and y labels, then the data points
 	public void drawGraph(){
-		String x[] = graph.getXLabels();
+		Date x[] = graph.getXLabels();
 		String y[] = graph.getYLabels();
 		int d[][] = graph.getData();
 		
@@ -24,7 +25,7 @@ public class DrawGraph {
 		System.out.println("X-labels");
 		System.out.println(x.toString());
 		//ylabels
-		System.out.println("Y-labels:);
+		System.out.println("Y-labels:");
 		System.out.println(y.toString());	
 		System.out.println("Data");
 		System.out.println(d.toString());
