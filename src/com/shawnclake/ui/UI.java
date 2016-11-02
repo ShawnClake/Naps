@@ -2,7 +2,7 @@ package com.shawnclake.ui;
 
 import com.shawnclake.auth.Auth;
 import com.shawnclake.auth.User;
-import com.shawnclake.Fitbit;
+import com.shawnclake.FitBit.FitBitManager;
 import com.shawnclake.graph.Graph;
 import com.shawnclake.graph.DrawGraph;
 
@@ -102,15 +102,26 @@ public class UI {
 		////////////////MAIN PROGRAM///////////////////////////////////////////////////////
 		///////Loop runs for the duration of the program
 		///////It will allow the user to use the reminders, fitbit, and displaying results
-		System.out.println("NAPS");
-		System.out.println("Select one of the following features:");
-		//list features
-		//fitbit class
-		//reminder class
-		//graph class
-		
-		
-		in.close();
+		while(choice != "quit"){
+			System.out.println("NAPS");
+			System.out.println("Select one of the following features:");
+			//list features
+			System.out.println("reminder - Set reminders here.");
+			System.out.println("data - View your sleep data here.");
+			choice = in.nextLine();
+			choice = choice.toLowerCase();
+			if(choice.equals("reminder")){
+				//reminder class
+				
+			}
+			
+			//fitbit class
+			
+			//graph class
+			
+			
+			in.close();
+		}
 		
 	}
 
