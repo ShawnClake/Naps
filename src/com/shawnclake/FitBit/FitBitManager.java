@@ -28,7 +28,6 @@ public class FitBitManager<E> {
 
 	@SuppressWarnings("unchecked")
 	public E[] getData(FitBitVariable fbv, Date[] dateRange, Class<E> clazz) {
-
 		
 		/**create a generic array**/
 	    @SuppressWarnings("unchecked")
