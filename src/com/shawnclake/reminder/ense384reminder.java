@@ -1,3 +1,4 @@
+package com.shawnclake.reminder;
 
 //In Main you will have to initialize a reminders(collection) called listOfReminders and a static Remind object called remindObject, and if that collection is not empty, then you will need to periodically call Remindobject.start(reminders.check()). To access the Reminder UI, 
 //you must call ReminderUI();
