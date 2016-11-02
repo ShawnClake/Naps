@@ -108,16 +108,27 @@ public class UI {
 			//list features
 			System.out.println("reminder - Set reminders here.");
 			System.out.println("data - View your sleep data here.");
+			System.out.println("quit - quit the program.");
+			//include option to logout here if not a guest?????
 			choice = in.nextLine();
 			choice = choice.toLowerCase();
 			if(choice.equals("reminder")){
 				//reminder class
 				
 			}
-			
 			//fitbit class
-			
 			//graph class
+			else if(choice.equals("data")){
+				
+			}
+			else if(choice.equals("quit")){
+				System.out.println("Thank you for using NAPS.");
+				System.out.println("Quitting...");
+			}
+			else{
+				System.out.println("Not a valid choice");
+				System.out.println("Please select either reminder, data, or quit...");
+			}
 			
 			
 			in.close();
