@@ -1,5 +1,6 @@
 package com.shawnclake.graph;
 
+import java.util.Arrays;
 /*****************************************************************************
  * Graph Class
  * 
@@ -17,25 +18,33 @@ public class Graph {
 	private int data[][];
 
 	public Graph(){
-		//set xlabels
-		//set ylabels
-		//set data
 		
 	}
 	
 	//sets the x-axis label
 	public void setXLables(String x[]){
-		
+		xlabels = Arrays.copyOf(x, x.length);
 	}
 	
 	//sets the y-axis label
 	public void setYLables(String y[]){
-		
+		ylabels = Arrays.copyOf(y, y.length);
 	}
 	
 	//takes in an array of data points and sets the values of the data member variable
 	public void setData(int d[][]){
-		
+		data = Arrays.copyOf(d, d.length);
+	}
+	
+	//getters
+	public String[] getXLabels(){
+		return this.xlabels;
+	}
+	public String[] getYLabels(){
+		return this.ylabels;
+	}
+	public int[][] getData(){
+		return this.data;
 	}
 	
 	
