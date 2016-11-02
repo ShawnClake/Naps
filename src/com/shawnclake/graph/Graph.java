@@ -17,17 +17,14 @@ public class Graph {
 	private String ylabels[];
 	private int data[][];
 
-	public Graph(){
-		
-	}
-	
+
 	//sets the x-axis label
-	public void setXLables(String x[]){
+	public void setXLabels(String x[]){
 		xlabels = Arrays.copyOf(x, x.length);
 	}
 	
 	//sets the y-axis label
-	public void setYLables(String y[]){
+	public void setYLabels(String y[]){
 		ylabels = Arrays.copyOf(y, y.length);
 	}
 	
