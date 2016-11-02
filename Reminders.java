@@ -3,14 +3,33 @@ import java.util.Date;
 
 public class Reminders {
 
-	private ArrayList<Reminder> reminders;
+	private ArrayList<Remind> reminders;
 
-	public Reminders(ArrayList<Reminder> mainReminders)
+	
+	public Reminders()
 	{
-		reminders =mainReminders;
+		
+		reminders = new ArrayList<Remind>();
 		
 		
 	}
+	
+	
+	
+	public Reminders(ArrayList<Remind> mainReminders)
+	{
+		reminders = mainReminders;
+		
+		
+	}
+	
+	Remind getRemind(int i)
+	{
+		return reminders.get(i);
+		
+		
+	}
+	
 	
 	public int getCount()
 	{
@@ -19,23 +38,23 @@ public class Reminders {
 		
 	}
 	
-	public Reminder check()		//Checks if any of the current reminders have the same time as the current date, if yes returns the first reminder found, else returns null
+	public void check()		//Checks if any of the current reminders have the same time as the current date, if yes returns the first reminder found, else returns null
 	{
 		Date currentTime = new Date();	//Praying this gives the current time
 		
 		for(int i = 0; i < reminders.size(); i++)
 		{
-			if(reminders[i].getTime() == currentTime)
-				 return reminders[i];
+			reminders.get(i).checkTime(currentTime);
+			
 			
 		}
 		
-		
+		return;
 	}
 	
 	
 
-	public void addReminder(Reminder addedReminder)
+	public void addReminder(Remind addedReminder)
 	{
 		reminders.add(addedReminder);
 		
@@ -43,7 +62,7 @@ public class Reminders {
 
 	public void removeReminder(int position)	//The position int will have to be taken
 	{
-		if(position > -1 || position >= reminders.size())
+		if(position < 0 || position >= reminders.size())
 		{
 			System.out.println("Error: Reminder position was not within bounds.");
 			return;
@@ -62,9 +81,10 @@ public class Reminders {
 	{
 		for(int i = 0; i < reminders.size(); i++)
 		{
-			System.out.println("Reminder 1: " + reminders[i].getName());
-			System.out.println("Description: " + reminders[i].getDescription());
-			System.out.println("Date: " + reminders[i].getTime());
+			System.out.println("Reminder " + i + 1 + ": " + reminders.get(i).getReminder().getName());
+			System.out.println("Description: " + reminders.get(i).getReminder().getDescription());
+			System.out.println("Date: " + reminders.get(i).getReminder().getTime());
+			System.out.println("Type: " + reminders.get(i).getType());
 			System.out.println("");
 			
 			

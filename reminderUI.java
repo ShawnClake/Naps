@@ -2,7 +2,7 @@
 //
 //To call this function in the main, you must make a global variable listOfReminders to store the reminders in.
 //If the user wants to access the UI, You must make a reminderUI object and call the method UI on that object with the parameter listOfReminders (IE. REMINDERUIPBJECT.UI(listOfReminders);
-// OK, and also, you need to periodically call
+// OK, and also, you need to periodically call THE CALL METHOD (COMING SOON)!!
 //
 //
 //
@@ -15,14 +15,34 @@
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.TimeZone;
+
+
+
+
 
 public class reminderUI			//Want to make this static, don't know how
 
 		//Passed by reference. Kinda confused how java does this. W/E make listOfReminders global then and just get rid of the parameter
 	{
 	
-	public void UI(Reminders listOfReminders)
+	
+	public static void main(String[] args) {
+		
+		Reminders globalReminders = new Reminders();
+		Scanner inn = new Scanner(System.in);
+		
+		
+		
+		UI(globalReminders);
+
+		globalReminders.check();
+		
+		
+		
+	}
+	
+	
+	public static void UI(Reminders listOfReminders)
 	{
 		
 	
@@ -68,26 +88,43 @@ public class reminderUI			//Want to make this static, don't know how
 		switch(choice)
 		{
 			case 1:
+				
+				if(listOfReminders.getCount() == 0)
+				{
+					System.out.println("There are currently no reminders to display.");
+					continue;
+				}
+				
 				System.out.println("Here are the current reminders:");
-				listOfReminders.printReminders()		//Whatever the reminders(collection) object in main is
+				listOfReminders.printReminders();		
 			
 			
 				continue;
 			
 			case 2:
-				Remind = new Remind();
-				Date myDate;
-				TimeZone timezone = TimeZone.getTimeZone("Canada/Saskatchewan");	
-				Calendar cal = Calendar.getInstance(timezone);
+				
+				Date myDate = new Date();
+				//myDate.getTime();
+				
+				//System.out.println(myDate);
+				//TimeZone timezone = TimeZone.getTimeZone("Canada/Saskatchewan");	
+				//Calendar cal = Calendar.getInstance(timezone);
+				Calendar cal = Calendar.getInstance();
+				
+				
+				
+				Remind addedRemind;
 				
 				
 				System.out.println("Please enter the name of the reminder:");
-				int entry1 = in.nextInt();
+				String entry1 = in.next();
 				
 				System.out.println("Please enter the description of the reminder:");
-				int entry2 = in.nextInt();
+				String entry2 = in.next();
+					
+				   
 				
-				System.out.println("Please enter the year of the reminder (Ex. 10 = October):");
+				System.out.println("Please enter the year of the reminder (Ex. 2016):");
 				int entry3 = in.nextInt();
 				
 				System.out.println("Please enter the month of the reminder (Ex. 10 = October):");
@@ -96,21 +133,78 @@ public class reminderUI			//Want to make this static, don't know how
 				System.out.println("Please enter the day of the reminder:");
 				int entry5 = in.nextInt();
 				
-				System.out.println("Please enter the hour of the reminder (Ex. 10 = October):");
+				System.out.println("Please enter the hour of the reminder (Ex. 13 = 1 PM):");
 				int entry6 = in.nextInt();
 				
 				System.out.println("Please enter the minute of the reminder:");
 				int entry7 = in.nextInt();
 				
+				System.out.println("Please enter the type of alarm (:");
+				System.out.println("Enter 1 for VIBRATION");
+				System.out.println("Enter 2 for SOUND");
+				System.out.println("Enter 3 for VIBRATION + SOUND");
 				
-				cal.set(Calendar.YEAR, entry3);
-				cal.set(Calendar.MONTH, entry4 - 1); //-1 b/c 0 indexed
-				cal.set(Calendar.DATE, entry5);
-				cal.set(Calendar.HOUR,entry6);
-				cal.set(Calendar.MINUTE,entry7);
-				cal.set(Calendar.SECOND,00);
+				int entry8 = in.nextInt();
+				
+				while(entry8 < 1 && entry8 > 3)
+				{
+					System.out.println("Invalid entry.");
+					System.out.println("Enter a number from 1 - 3");
+					entry8 = in.nextInt();
+				}
+				
+				type cType = type.VIBRATION;
+				
+				switch(entry8)
+				{
+				case 1: cType = type.VIBRATION;
+						break;
+				
+				case 2: cType = type.SOUND;
+						break;
+				
+				case 3: cType = type.SOUND_VIBRATION;
+						break;
+				
+				
+				}
+				
+				
+				
+				
+				
+				cal.set(entry3, entry4 - 1, entry5, entry6, entry7, 0);
+				//System.out.println(cal.getTime());
+				
 				myDate = cal.getTime();
+				//System.out.println(myDate);
 				
+				
+				
+				
+				
+				
+				Reminder addedReminder = new Reminder(entry1, myDate, entry2);
+				
+				addedRemind = new Remind(cType, addedReminder);
+				
+				
+				
+				listOfReminders.addReminder(addedRemind);
+				
+				
+				//for(int i = 0; i < listOfReminders.getCount(); i++)
+				//{
+				//	System.out.println("Reminder 1: " + listOfReminders.getRemind(i).getReminder().getName());
+				//	System.out.println("Description: " + listOfReminders.getRemind(i).getReminder().getDescription());
+				//	System.out.println("Date: " + listOfReminders.getRemind(i).getReminder().getTime());
+				//	System.out.println("");
+					
+					
+					
+				//}
+				
+				listOfReminders.printReminders();
 				//System.out.println(myDate);	//Test
 				
 				
@@ -119,7 +213,14 @@ public class reminderUI			//Want to make this static, don't know how
 			
 			case 3:
 			
-				listOfReminders.printReminders()
+				if(listOfReminders.getCount() == 0)
+				{
+					System.out.println("There are currently no reminders to display.");
+					continue;
+				}
+				
+				
+				listOfReminders.printReminders();
 				
 				System.out.println("");
 				System.out.println("Which reminder would you like to delete?");
@@ -149,6 +250,8 @@ public class reminderUI			//Want to make this static, don't know how
 	    }
 	}
 		
+		
+		in.close();
 		
 }
 	
