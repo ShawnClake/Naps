@@ -10,21 +10,23 @@ import java.util.Arrays;
  * Author: Jennifer Herasymuik
  *****************************************************************************/
 
-public class DrawGraph {
+public class DrawGraph<T> {
 	
-	private Graph graph;
+	private Graph<T> graph;
 	
 	//this function uses the graph member variable and draws out the graph
 	//for now it will print out the x and y labels, then the data points
 	public void drawGraph(){
 		String x[] = graph.getXLabels();
-		String y[] = graph.getYLabels();
-		int d[][] = graph.getData();
+		//String y[] = graph.getYLabels();
+		T d[][] = graph.getData();
 		
+		//the x-labels represent the dates the user selected
 		System.out.println("X-labels");
 		System.out.println(x.toString());
-		System.out.println("Y-labels");
-		System.out.println(y.toString());
+		//******we are going to ignore the ylabels for now since we have no values for these yet
+		//System.out.println("Y-labels");
+		//System.out.println(y.toString());
 		System.out.println("Data");
 		System.out.println(d.toString());
 	}

@@ -11,11 +11,11 @@ import java.util.Arrays;
  * Author: Jennifer Herasymuik
  *****************************************************************************/
 
-public class Graph {
+public class Graph<T> {
 
 	private String xlabels[];
 	private String ylabels[];
-	private int data[][];
+	private T data[][];
 
 
 	//sets the x-axis label
@@ -23,13 +23,13 @@ public class Graph {
 		xlabels = Arrays.copyOf(x, x.length);
 	}
 	
-	//sets the y-axis label
+	//sets the y-axis label, we have no y labels yet so this will not be used
 	public void setYLabels(String y[]){
 		ylabels = Arrays.copyOf(y, y.length);
 	}
 	
 	//takes in an array of data points and sets the values of the data member variable
-	public void setData(int d[][]){
+	public void setData(T d[][]){
 		data = Arrays.copyOf(d, d.length);
 	}
 	
@@ -40,11 +40,11 @@ public class Graph {
 	public String[] getYLabels(){
 		return this.ylabels;
 	}
-	public int[][] getData(){
+	public T[][] getData(){
 		return this.data;
 	}
 	
-	
+	//still will not be used as we are reading all values from a file
 	public void push(int xVal, int yVal){
 		
 	}
