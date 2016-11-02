@@ -41,7 +41,7 @@ public class Graph<T> {
 		return this.ylabels;
 	}
 	public T[][] getData(){
-		return this.data;
+		return data;
 	}
 	
 	//still will not be used as we are reading all values from a file

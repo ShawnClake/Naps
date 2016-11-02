@@ -25,14 +25,12 @@ public class DrawGraph<T> {
 		System.out.println("X-labels");
 		System.out.println(x.toString());
 		//******we are going to ignore the ylabels for now since we have no values for these yet
-		//System.out.println("Y-labels");
-		//System.out.println(y.toString());
 		System.out.println("Data");
 		System.out.println(d.toString());
 	}
 	
 	//this functions takes in a graph, then sets the graph member variable to this graph
-	public void setGraph(Graph g){
+	public void setGraph(Graph<T> g){
 		graph.setXLabels(g.getXLabels());
 		graph.setYLabels(g.getYLabels());
 		graph.setData(g.getData());
