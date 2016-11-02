@@ -32,6 +32,7 @@ Our app will utilize a fitbit to measure a person's heart rate and movement thro
 * Goal/Achievement system
 * Dream/Idea journal
 * Central Database
+* Documentation
 
 ## Planned supported devices ##
 * Android 4.0+
