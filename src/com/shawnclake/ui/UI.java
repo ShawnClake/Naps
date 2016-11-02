@@ -158,8 +158,9 @@ public class UI {
 					dateRange[1] = df.parse(stringDate);
 	            	FitBitManager<Integer> fbmInt = new FitBitManager<Integer>();
 	            	FitBitManager<Date> fbmDate = new FitBitManager<Date>();
+	            	
 
-
+	            	Graph currentGraph;
 					//Future task for Sam/Jen is to break UI into at least two files where the fitbit UI functionality can be seperated out and templated
 			        switch (metricChoice) {
 		            case 1:	      
@@ -197,6 +198,8 @@ public class UI {
 		                break;        
 		        }
 
+			        //set the xlabels
+			        //set ylabels
 					
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
@@ -217,8 +220,9 @@ public class UI {
 			}
 			
 			
-			in.close();
+			
 		}
+		in.close();
 		
 	}
 

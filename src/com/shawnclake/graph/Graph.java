@@ -37,7 +37,7 @@ public class Graph<T> {
 	public String[] getXLabels(){
 		return this.xlabels;
 	}
-	public String[] getYLabels(){
+	public String[] getYLabels(){  //may be an integer or a date for now
 		return this.ylabels;
 	}
 	public T[][] getData(){
