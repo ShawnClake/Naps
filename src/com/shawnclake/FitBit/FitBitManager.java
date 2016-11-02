@@ -1,10 +1,10 @@
 package com.shawnclake.FitBit;
 
-import com.shawnclake.io.FileInput;
-
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Paths;
-import java.security.MessageDigest;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,139 +24,104 @@ import java.util.Scanner;
  *
  */
 
-public class FitBitManager {
+public class FitBitManager<E> {
 
-	public FitBitVariableTemplate[] getData(FitBitVariable fbv, Date[] dateRange) {
+	@SuppressWarnings("unchecked")
+	public E[] getData(FitBitVariable fbv, Date[] dateRange, Class<E> clazz) {
 
-		switch(fbv) {
 		
-		case sleepDate:
-		FitBitVariableTemplate[].set(Date);	
-		case isMainSleep:
-			
-		case logId: 
-			
-		case efficiency:
-			
-		case startTime:
-			
-		case duration:
-			
-		case minutesToFallAsleep:
-			
-		case minutesAsleep:
-			
-		case minutesAwake:
-			
-		case minutesAfterWakeup:
-			
-		case AwakeningsCount:
-			
-		case awakeCount:
-			
-		case awakeDuration: 
-			
-		case restlessCount:
-			
-		case restlessDuration:
-			
-		case timeInBed:
-			
-		case minuteDataDate:
-			
-		case minuteDataValue:
-	
-		
-		
-		}
-		
-		
-		
+		/**create a generic array**/
+	    @SuppressWarnings("unchecked")
+	    E[] arr = (E[]) Array.newInstance(clazz, 1000);	
+	    
 	Scanner in = new Scanner(System.in);
-	List<FitBitData> FBDList = new ArrayList<FitBitData>();	
+	int i = 0;
+	DateFormat lDF = DateFormat.getDateInstance(DateFormat.LONG);
+	DateFormat sDF = DateFormat.getDateInstance(DateFormat.SHORT);
 	
-		      try {
+	
+	
+	Date startDate = dateRange[0];
+	Date endDate = dateRange[1];
+	Date compareDate = null;
+	
+	try {
+		Scanner fileIn = new Scanner(Paths.get("FakeData.csv"));
 
-					Scanner fileIn = new Scanner(Paths.get("FakeEmployee.csv"));
-
-					while (fileIn.hasNextLine()) {
-						
-						String line = fileIn.nextLine();
-						String[] data = line.split(",");
-						
-						switch(fbv) {
-						
-						case sleepDate:
-							 data[0];
-						case isMainSleep:
-							
-						case logId: 
-							
-						case efficiency:
-							
-						case startTime:
-							
-						case duration:
-							
-						case minutesToFallAsleep:
-							
-						case minutesAsleep:
-							
-						case minutesAwake:
-							
-						case minutesAfterWakeup:
-							
-						case AwakeningsCount:
-							
-						case awakeCount:
-							
-						case awakeDuration: 
-							
-						case restlessCount:
-							
-						case restlessDuration:
-							
-						case timeInBed:
-							
-						case minuteDataDate:
-							
-						case minuteDataValue:
-					
-						
-						
-						}
-						String firstName = data[0];
-						
-						String lastName = data[1];
-						
-						String address = data[2];
-						
-						String phoneNumber = data[3];
-						
-						String hireDate = data[4];
-			
-						Double salary = Double.parseDouble(data[5]); //casting is explictly used here as it is necessary
-						
-						
-						
-						
-						
-					   Employee dummyEmployee = new Employee(firstName, lastName, address, phoneNumber, hireDate, salary);
-					   
-						EmployeeList.add(dummyEmployee);
-					   												
-					}
-					fileIn.close();
-					System.out.println("File data stored.");
-					System.out.println("Please select one of the original 3 options from the main menu: Manual, Auto or List.");
-					System.out.println("Or enter END to exit the employee database.");
-					
-					
-				}
-				 
-				catch (IOException e) {
+		 
+		 while (fileIn.hasNextLine()) {
+				String line = fileIn.nextLine();
+				String[] data = line.split(",");
+				
+				try {
+					compareDate = lDF.parse(data[0]);
+				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-}
+				
+				if (startDate.compareTo(compareDate)==0)	//
+				{
+
+					
+					while ((endDate.compareTo(compareDate)!=0)&&(fileIn.hasNextLine()))
+					{
+						
+						switch(fbv){
+						case sleepDate:
+							arr[i] = (E) (data[0]);
+						case isMainSleep:
+							arr[i] = (E) (data[1]);;
+						case logId: 
+							arr[i] = (E) (data[2]);
+						case efficiency:
+							arr[i] = (E) (data[3]);
+						case startTime:
+							arr[i] = (E) (data[4]);
+						case duration:
+							arr[i] = (E) (data[5]);
+						case minutesToFallAsleep:
+							arr[i] = (E) (data[6]);
+						case minutesAsleep:
+							arr[i] = (E) (data[7]);
+						case minutesAwake:
+							arr[i] = (E) (data[8]);
+						case minutesAfterWakeup:
+							arr[i] = (E) (data[9]);
+						case AwakeningsCount:
+							arr[i] = (E) (data[10]);
+						case awakeCount:
+							arr[i] = (E) (data[11]);
+						case awakeDuration: 
+							arr[i] = (E) (data[12]);
+						case restlessCount:
+							arr[i] = (E) (data[13]);
+						case restlessDuration:
+							arr[i] = (E) (data[14]);
+						case timeInBed:
+							arr[i] = (E) (data[15]);
+						case minuteDataDate:
+							arr[i] = (E) (data[16]);
+						case minuteDataValue:
+							arr[i] = (E) (data[17]);
+						}
+						i++;
+						line = fileIn.nextLine();
+						data = line.split(",");
+						
+						try {
+							compareDate = lDF.parse(data[0]);
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+						
+					}
+				}
+			}
+	}
+	catch (IOException e) {
+		e.printStackTrace();
+	}
+	return arr;
+	}
 }
 
