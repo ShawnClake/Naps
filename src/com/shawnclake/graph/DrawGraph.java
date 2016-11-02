@@ -14,9 +14,18 @@ public class DrawGraph {
 	private Graph graph;
 	
 	//this function uses the graph member variable and draws out the graph
-	//for now the graph will be viewed as a table of data points
+	//for now it will print out the x and y labels, then the data points
 	public void drawGraph(){
+		String x[] = graph.getXLabels();
+		String y[] = graph.getYLabels();
+		int d[][] = graph.getData();
 		
+		System.out.println("X-labels");
+		System.out.println(x.toString());
+		System.out.println("Y-labels");
+		System.out.println(y.toString());
+		System.out.println("Data");
+		System.out.println(d.toString());
 	}
 	
 	//this functions takes in a graph, then sets the graph member variable to this graph
