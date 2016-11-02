@@ -17,7 +17,7 @@ public class DrawGraph {
 	//for now it will print out the x and y labels, then the data points
 	public void drawGraph(){
 		String x[] = graph.getXLabels();
-		//String y[] = graph.getYLabels();
+		String y[] = graph.getYLabels();
 		int d[][] = graph.getData();
 		
 		//the x-labels represent the dates the user selected
