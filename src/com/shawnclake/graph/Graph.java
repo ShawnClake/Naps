@@ -34,7 +34,7 @@ public class Graph {
 		data = Arrays.copyOf(d, d.length);
 	}
 	
-	public void fitbitSet(Integer data[]){
+	public void fitbitSet(int data[]){
 		for (int i = 0; i < data.length; i++){
 			this.data[i][0] = data[i];
 		}
