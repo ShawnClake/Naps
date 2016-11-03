@@ -26,7 +26,7 @@ public class reminderUI			//Want to make this static, don't know how
 	{
 	
 	
-	public static void main(String[] args) {
+	//public static void main(String[] args) {
 		
 		
 		
@@ -39,14 +39,14 @@ public class reminderUI			//Want to make this static, don't know how
 
 		//globalReminders.check();
 		
-		test();
+		//test();
 		
 		
-		System.out.println("STOPPED");
+		//System.out.println("STOPPED");
 		
 		
 		
-	}
+	//}
 	
 	
 	private static void test() {
