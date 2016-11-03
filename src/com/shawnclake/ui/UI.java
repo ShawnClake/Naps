@@ -61,6 +61,7 @@ public class UI {
 		if(choice.equals("login")){
 			boolean valid = true;
 			do{
+				valid = true;
 			//get users username and password
 			System.out.println("LOGIN");
 			System.out.print("Username: ");

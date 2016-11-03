@@ -19,7 +19,7 @@ public class DrawGraph {
 	public void drawGraph(){
 		Date x[] = graph.getXLabels();
 		String y[] = graph.getYLabels();
-		int d[][] = graph.getData();
+		int d[] = graph.getData();
 		
 		//the x-labels represent the dates the user selected
 		System.out.println("X-labels");

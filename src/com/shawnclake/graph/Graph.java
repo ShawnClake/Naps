@@ -16,8 +16,11 @@ public class Graph {
 
 	private Date xlabels[];
 	private String ylabels[];
-	private int data[][];
+	private int data[];
 
+	public Graph(){
+		data = null;
+	}
 
 	//sets the x-axis label
 	public void setXLabels(Date x[]){
@@ -30,13 +33,13 @@ public class Graph {
 	}
 	
 	//takes in an array of data points and sets the values of the data member variable
-	public void setData(int d[][]){
+	public void setData(int d[]){
 		data = Arrays.copyOf(d, d.length);
 	}
 	
-	public void fitbitSet(int data[]){
-		for (int i = 0; i < data.length; i++){
-			this.data[i][0] = data[i];
+	public void fitbitSet(int d[]){
+		for (int i = 0; i < d.length; i++){
+			data[i] = d[i];
 		}
 	}
 	//getters
@@ -46,7 +49,7 @@ public class Graph {
 	public String[] getYLabels(){  //may be an integer or a date for now
 		return this.ylabels;
 	}
-	public int[][] getData(){
+	public int[] getData(){
 		return data;
 	}
 	
