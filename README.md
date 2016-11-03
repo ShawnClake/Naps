@@ -22,10 +22,10 @@ Our app will utilize a fitbit to measure a person's heart rate and movement thro
 ## Upcoming Features ##
 * Sessions/Logout
 * Utilizing Reminders
+* Wake up alarms
 * Providing suggestions to improve sleep
 
 ## Planned Features ##
-* Wake up alarms
 * Soothing music
 * External links to sleep health articles
 * Trivia facts about sleep
