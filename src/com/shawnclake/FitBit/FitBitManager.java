@@ -1,10 +1,12 @@
 package com.shawnclake.FitBit;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -22,32 +24,31 @@ import java.util.Scanner;
  *
  */
 
-public class FitBitManager<E> {
+public class FitBitManager {
 
 	@SuppressWarnings("unchecked")
-	public E[] getData(FitBitVariable fbv, Date[] dateRange, Class<E> clazz) {
+	public static int[] getData(FitBitVariable fbv, Date startDate, Date endDate) {
 		
-		/**create a generic array**/
-	    @SuppressWarnings("unchecked")
-	    E[] arr = (E[]) Array.newInstance(clazz, 1000);	
+	    //will be changed in version 2.0 to be sized based on date range
+	    int[] arr = new int [1000];
 	    
 	Scanner in = new Scanner(System.in);
 	int i = 0;
-	DateFormat lDF = DateFormat.getDateInstance(DateFormat.LONG);
+	DateFormat lDF = new SimpleDateFormat("dd/mm/yyyy");
 	DateFormat sDF = DateFormat.getDateInstance(DateFormat.SHORT);
 	
-	
-	
-	Date startDate = dateRange[0];
-	Date endDate = dateRange[1];
 	Date compareDate = null;
 	
 	try {
-		Scanner fileIn = new Scanner(Paths.get("FakeData.csv"));
+		//Scanner fileIn = new Scanner(Paths.get("fakeData.csv"));
+        Scanner filein = new Scanner(new File("fakeData.csv"));
+        filein.useDelimiter(",");
+		String line = filein.nextLine(); //must skip first line
 
-		 
-		 while (fileIn.hasNextLine()) {
-				String line = fileIn.nextLine();
+        
+        while(filein.hasNext()) {
+				line = filein.nextLine();
+
 				String[] data = line.split(",");
 				
 				try {
@@ -60,49 +61,64 @@ public class FitBitManager<E> {
 				{
 
 					
-					while ((endDate.compareTo(compareDate)!=0)&&(fileIn.hasNextLine()))
+					while ((endDate.compareTo(compareDate)!=0)&&(filein.hasNext()))
 					{
 						
 						switch(fbv){
-						case sleepDate:
-							arr[i] = (E) (data[0]);
-						case isMainSleep:
-							arr[i] = (E) (data[1]);;
-						case logId: 
-							arr[i] = (E) (data[2]);
 						case efficiency:
-							arr[i] = (E) (data[3]);
+							arr[i] = Integer.parseInt(data[3]);
+							break;
 						case startTime:
-							arr[i] = (E) (data[4]);
+							arr[i] = Integer.parseInt(data[4]);
+							break;
+
 						case duration:
-							arr[i] = (E) (data[5]);
+							arr[i] = Integer.parseInt(data[5]);
+							break;
+
 						case minutesToFallAsleep:
-							arr[i] = (E) (data[6]);
+							arr[i] = Integer.parseInt(data[6]);
+							break;
+
 						case minutesAsleep:
-							arr[i] = (E) (data[7]);
+							arr[i] = Integer.parseInt(data[7]);
+							break;
+
 						case minutesAwake:
-							arr[i] = (E) (data[8]);
+							arr[i] = Integer.parseInt(data[8]);
+							break;
+
 						case minutesAfterWakeup:
-							arr[i] = (E) (data[9]);
+							arr[i] = Integer.parseInt(data[9]);
+							break;
+
 						case AwakeningsCount:
-							arr[i] = (E) (data[10]);
+							arr[i] = Integer.parseInt(data[10]);
+							break;
+
 						case awakeCount:
-							arr[i] = (E) (data[11]);
+							arr[i] = Integer.parseInt(data[11]);
+							break;
+
 						case awakeDuration: 
-							arr[i] = (E) (data[12]);
+							arr[i] = Integer.parseInt(data[12]);
+							break;
+
 						case restlessCount:
-							arr[i] = (E) (data[13]);
+							arr[i] = Integer.parseInt(data[13]);
+							break;
+
 						case restlessDuration:
-							arr[i] = (E) (data[14]);
+							arr[i] = Integer.parseInt(data[14]);
+							break;
+
 						case timeInBed:
-							arr[i] = (E) (data[15]);
-						case minuteDataDate:
-							arr[i] = (E) (data[16]);
-						case minuteDataValue:
-							arr[i] = (E) (data[17]);
+							arr[i] = Integer.parseInt(data[15]);
+							break;
+
 						}
 						i++;
-						line = fileIn.nextLine();
+						line = filein.nextLine();
 						data = line.split(",");
 						
 						try {

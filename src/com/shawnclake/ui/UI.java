@@ -146,90 +146,101 @@ public class UI {
 				System.out.println("You view data from any period within: 2/5/2014 to 10/31/2016 ");
 				System.out.println("Please enter the Start Date in DD/MM/YYYY format:");
 				in.nextLine();
-				String stringDate = in.nextLine();
-				Date[] dateRange = new Date[2];
-				
-				DateFormat df = new SimpleDateFormat("d/M/yyyy");
+				String stringDate = in.nextLine();				
+				DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
 				
 				//Due to casting a try/catch statement must be used
 				try {
-					dateRange[0] = df.parse(stringDate);
+					Date startDate = df.parse(stringDate);
 					System.out.println("Please enter the End Date in DD/MM/YYYY format:");
 					stringDate = in.nextLine();
-					dateRange[1] = df.parse(stringDate);
-	            	FitBitManager<Integer> fbmInt = new FitBitManager<Integer>();
-	            	FitBitManager<Date> fbmDate = new FitBitManager<Date>();
-	            	
+					Date endDate = df.parse(stringDate);
+
+					FitBitManager fbm = null;
+	            	int[] graphArray;
 
 	            	Graph currentGraph = new Graph();
 	            	String yvals[] = {"0", "0"};
 					//Future task for Sam/Jen is to break UI into at least two files where the fitbit UI functionality can be seperated out and templated
-			        case 1:	      
-		            	Integer[] graphArray1 = fbmInt.getData(FitBitVariable.efficiency, dateRange, int.class);
-		            	yvals[0] = "0";
+			    switch(metricChoice){   
+					case 1:	      
+		              	graphArray = FitBitManager.getData(FitBitVariable.efficiency, startDate, endDate);
+
+						yvals[0] = "0";
 		            	yvals[1] = "100";
-		            	currentGraph.fitbitSet(graphArray1);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;
 		            case 2:
-		            	Date[] graphArray2 = fbmDate.getData(FitBitVariable.startTime, dateRange, Date.class);
+						System.out.println("Start Time is not currently available. It will be in Naps 2.0");
+
+		            	//Date[] graphArray2 = fbmDate.getData(FitBitVariable.startTime, dateRange, Date.class);
 		                break;
 		            case 3:
-		            	Integer[] graphArray3 = fbmInt.getData(FitBitVariable.minutesToFallAsleep, dateRange, int.class);
+		              	graphArray = fbm.getData(FitBitVariable.minutesToFallAsleep, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray3);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;
 		            case 4:
-		            	Integer[] graphArray4 = fbmInt.getData(FitBitVariable.minutesAsleep, dateRange, int.class);		         
+		              	graphArray = fbm.getData(FitBitVariable.minutesAsleep, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "2000";
-		            	currentGraph.fitbitSet(graphArray4);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;
 		            case 5:
-		            	Integer[] graphArray5 = fbmInt.getData(FitBitVariable.minutesAwake, dateRange, int.class);	
+		              	graphArray = fbm.getData(FitBitVariable.minutesAwake, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "2000";
-		            	currentGraph.fitbitSet(graphArray5);
+		            	currentGraph.fitbitSet(graphArray);
 		                break;
 		            case 6:
-		            	Integer[] graphArray6 = fbmInt.getData(FitBitVariable.minutesAfterWakeup, dateRange, int.class);		            	
+		              	graphArray = fbm.getData(FitBitVariable.minutesAfterWakeup, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray6);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;
 		            case 7:
-		            	Integer[] graphArray7 = fbmInt.getData(FitBitVariable.awakeCount, dateRange, int.class);
+		              	graphArray = fbm.getData(FitBitVariable.awakeCount, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray7);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;
 		            case 8:
-		            	Integer[] graphArray8 = fbmInt.getData(FitBitVariable.awakeDuration, dateRange, int.class);
+		              	graphArray = fbm.getData(FitBitVariable.awakeDuration, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray8);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;    
 		            case 9:
-		            	Integer[] graphArray9 = fbmInt.getData(FitBitVariable.restlessCount, dateRange, int.class);
+		              	graphArray = fbm.getData(FitBitVariable.restlessCount, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray9);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;   
 		            case 10:
-		            	Integer[] graphArray10 = fbmInt.getData(FitBitVariable.restlessDuration, dateRange, int.class);
+		              	graphArray = fbm.getData(FitBitVariable.restlessDuration, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray10);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;    
 		            case 11:
-		            	Integer[] graphArray11 = fbmInt.getData(FitBitVariable.timeInBed, dateRange, int.class);         	
+		              	graphArray = fbm.getData(FitBitVariable.timeInBed, startDate, endDate);
+
 		            	yvals[0] = "0";
 		            	yvals[1] = "2000";
-		            	currentGraph.fitbitSet(graphArray11);
+		            	currentGraph.fitbitSet(graphArray);
 		            	break;        
 		        }
 
-			        //set the xlabels
+			       //set the xlabels
 			        currentGraph.setXLabels(dateRange);
 			        //set ylabels
 			        currentGraph.setYLabels(yvals);
