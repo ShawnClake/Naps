@@ -109,6 +109,7 @@ public class UI {
 		////////////////MAIN PROGRAM///////////////////////////////////////////////////////
 		///////Loop runs for the duration of the program
 		///////It will allow the user to use the reminders, fitbit, and displaying results
+		Reminders globalReminders = new Reminders();
 		while(choice != "quit"){
 			System.out.println("NAPS");
 			System.out.println("Select one of the following features:");
@@ -120,7 +121,7 @@ public class UI {
 			choice = in.nextLine();
 			choice = choice.toLowerCase();
 			if(choice.equals("reminder")){
-				Reminders globalReminders = new Reminders();
+				
 				reminderUI uii = new reminderUI();
 				uii.UI(globalReminders);
 				
@@ -244,6 +245,7 @@ public class UI {
 		        }
 
 			       //set the xlabels
+			    Date dateRange[] = {startDate, endDate};
 			        currentGraph.setXLabels(dateRange);
 			        //set ylabels
 			        currentGraph.setYLabels(yvals);
