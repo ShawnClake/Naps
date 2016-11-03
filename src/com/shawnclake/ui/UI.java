@@ -51,6 +51,13 @@ public class UI {
 		User current;
 		Auth authorize = new Auth();
 		
+		while((!choice.equals("login")) && (!choice.equals("register"))){
+			System.out.println("Please enter register or login only...");
+			System.out.println("Choice: ");
+			choice = in.nextLine();
+			choice = choice.toLowerCase();
+		}
+		
 		if(choice.equals("login")){
 			boolean valid = true;
 			do{
@@ -161,7 +168,7 @@ public class UI {
 					Date endDate = df.parse(stringDate);
 
 					FitBitManager fbm = null;
-	            	int[] graphArray;
+	            	int[] graphArray = {};
 
 	            	Graph currentGraph = new Graph();
 	            	String yvals[] = {"0", "0"};
@@ -172,7 +179,7 @@ public class UI {
 
 						yvals[0] = "0";
 		            	yvals[1] = "100";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;
 		            case 2:
 						System.out.println("Start Time is not currently available. It will be in Naps 2.0");
@@ -184,35 +191,35 @@ public class UI {
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;
 		            case 4:
 		              	graphArray = fbm.getData(FitBitVariable.minutesAsleep, startDate, endDate);
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "2000";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;
 		            case 5:
 		              	graphArray = fbm.getData(FitBitVariable.minutesAwake, startDate, endDate);
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "2000";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		                break;
 		            case 6:
 		              	graphArray = fbm.getData(FitBitVariable.minutesAfterWakeup, startDate, endDate);
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;
 		            case 7:
 		              	graphArray = fbm.getData(FitBitVariable.awakeCount, startDate, endDate);
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;
 		            case 8:
 		              	graphArray = fbm.getData(FitBitVariable.awakeDuration, startDate, endDate);
@@ -226,7 +233,7 @@ public class UI {
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;   
 		            case 10:
 		              	graphArray = fbm.getData(FitBitVariable.restlessDuration, startDate, endDate);
@@ -240,7 +247,7 @@ public class UI {
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "2000";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;        
 		        }
 
@@ -249,7 +256,7 @@ public class UI {
 			        currentGraph.setXLabels(dateRange);
 			        //set ylabels
 			        currentGraph.setYLabels(yvals);
-					
+			        currentGraph.fitbitSet(graphArray);
 			        //greate draw graph variable
 			        DrawGraph draw = new DrawGraph();
 			        //set draw graph
