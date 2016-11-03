@@ -278,6 +278,7 @@ public class UI {
 			else if(choice.equals("quit")){
 				System.out.println("Thank you for using NAPS.");
 				System.out.println("Quitting...");
+				return;
 			}
 			else{
 				System.out.println("Not a valid choice");

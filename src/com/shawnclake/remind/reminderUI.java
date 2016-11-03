@@ -294,7 +294,6 @@ public class reminderUI			//Want to make this static, don't know how
 	}
 		
 		
-		in.close();
 		
 }
 	
