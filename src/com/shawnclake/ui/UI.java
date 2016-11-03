@@ -118,7 +118,8 @@ public class UI {
 			choice = in.nextLine();
 			choice = choice.toLowerCase();
 			if(choice.equals("reminder")){
-				//reminder class
+				Reminders globalReminders = new Reminders();
+				UI(globalReminders);
 				
 			}
 			//fitbit class
@@ -259,7 +260,7 @@ public class UI {
 				System.out.println("Please select either reminder, data, or quit...");
 			}
 			
-			
+			globalReminders.check();//checks the time
 			
 		}
 		in.close();
