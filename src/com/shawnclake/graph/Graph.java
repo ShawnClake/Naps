@@ -1,4 +1,4 @@
-package graph;
+package com.shawnclake.graph;
 
 import java.util.Arrays;
 import java.util.Date;
