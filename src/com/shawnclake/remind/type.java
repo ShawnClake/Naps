@@ -1,4 +1,4 @@
-package remind;
+package com.shawnclake.remind;
 
 public enum type {
 	

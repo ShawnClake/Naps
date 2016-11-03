@@ -1,4 +1,4 @@
-package remind;
+package com.shawnclake.remind;
 
 import java.util.Date;
 public class Reminder {

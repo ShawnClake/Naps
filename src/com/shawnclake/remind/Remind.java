@@ -1,4 +1,4 @@
-package remind;
+package com.shawnclake.remind;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.Timer;
