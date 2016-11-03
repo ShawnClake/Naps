@@ -1,6 +1,7 @@
 package com.shawnclake.graph;
 
 import java.util.Date;
+import java.util.Arrays;
 /*****************************************************************************
  * DrawGraph Class
  * 
@@ -23,12 +24,12 @@ public class DrawGraph {
 		
 		//the x-labels represent the dates the user selected
 		System.out.println("X-labels");
-		System.out.println(x.toString());
+		System.out.println(Arrays.toString(x));
 		//ylabels
 		System.out.println("Y-labels:");
-		System.out.println(y.toString());	
+		System.out.println(Arrays.toString(y));	
 		System.out.println("Data");
-		System.out.println(d.toString());
+		System.out.println(Arrays.toString(d));
 	}
 	
 	//this functions takes in a graph, then sets the graph member variable to this graph
