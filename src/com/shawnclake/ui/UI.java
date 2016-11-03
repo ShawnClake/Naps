@@ -1,13 +1,13 @@
-package ui;
+package com.shawnclake.ui;
 
-import auth.Auth;
-import auth.User;
-import FitBit.FitBitManager;
-import FitBit.FitBitVariable;
-import graph.Graph;
-import graph.DrawGraph;
-import remind.Reminders;
-import remind.reminderUI;
+import com.shawnclake.auth.Auth;
+import com.shawnclake.auth.User;
+import com.shawnclake.FitBit.FitBitManager;
+import com.shawnclake.FitBit.FitBitVariable;
+import com.shawnclake.graph.Graph;
+import com.shawnclake.graph.DrawGraph;
+import com.shawnclake.remind.Reminders;
+import com.shawnclake.remind.reminderUI;
 
 import java.text.DateFormat;
 import java.text.ParseException;
