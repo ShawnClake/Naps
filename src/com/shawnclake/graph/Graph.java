@@ -20,6 +20,8 @@ public class Graph {
 
 	public Graph(){
 		data = null;
+		xlabels = null;
+		ylabels = null;
 	}
 
 	//sets the x-axis label
@@ -37,17 +39,13 @@ public class Graph {
 		data = Arrays.copyOf(d, d.length);
 	}
 	
-	public void fitbitSet(int d[]){
-		for (int i = 0; i < d.length; i++){
-			data[i] = d[i];
-		}
-	}
+	
 	//getters
 	public Date[] getXLabels(){
-		return this.xlabels;
+		return xlabels;
 	}
 	public String[] getYLabels(){  //may be an integer or a date for now
-		return this.ylabels;
+		return ylabels;
 	}
 	public int[] getData(){
 		return data;

@@ -33,8 +33,6 @@ public class DrawGraph {
 	
 	//this functions takes in a graph, then sets the graph member variable to this graph
 	public void setGraph(Graph g){
-		graph.setXLabels(g.getXLabels());
-		graph.setYLabels(g.getYLabels());
-		graph.setData(g.getData());
+		graph = g;
 	}
 }

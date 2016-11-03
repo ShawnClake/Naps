@@ -61,7 +61,7 @@ public class UI {
 		if(choice.equals("login")){
 			boolean valid = true;
 			do{
-				valid = true;
+			
 			//get users username and password
 			System.out.println("LOGIN");
 			System.out.print("Username: ");
@@ -227,7 +227,7 @@ public class UI {
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;    
 		            case 9:
 		              	graphArray = fbm.getData(FitBitVariable.restlessCount, startDate, endDate);
@@ -241,7 +241,7 @@ public class UI {
 
 		            	yvals[0] = "0";
 		            	yvals[1] = "200";
-		            	currentGraph.fitbitSet(graphArray);
+		            	
 		            	break;    
 		            case 11:
 		              	graphArray = fbm.getData(FitBitVariable.timeInBed, startDate, endDate);
@@ -257,7 +257,7 @@ public class UI {
 			        currentGraph.setXLabels(dateRange);
 			        //set ylabels
 			        currentGraph.setYLabels(yvals);
-			        currentGraph.fitbitSet(graphArray);
+			        currentGraph.setData(graphArray);
 			        //greate draw graph variable
 			        DrawGraph draw = new DrawGraph();
 			        //set draw graph
