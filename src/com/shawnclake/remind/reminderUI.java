@@ -1,3 +1,4 @@
+package remind;
 // OK READ HERE JEN
 //
 //To call this function in the main, you must make a global variable listOfReminders to store the reminders in.

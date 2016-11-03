@@ -6,8 +6,8 @@ import com.shawnclake.FitBit.FitBitManager;
 import com.shawnclake.FitBit.FitBitVariable;
 import com.shawnclake.graph.Graph;
 import com.shawnclake.graph.DrawGraph;
-import com.shawnclake.Reminders;
-import com.shawnclake.reminderUI;
+import com.shawnclake.remind.Reminders;
+import com.shawnclake.remind.reminderUI;
 
 import java.text.DateFormat;
 import java.text.ParseException;

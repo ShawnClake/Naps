@@ -1,3 +1,4 @@
+package remind;
 
 public enum type {
 	
