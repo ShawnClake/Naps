@@ -7,6 +7,7 @@ public class Remind {
 
 	type   alarmType;
 	Reminder reminderRemind;
+	public boolean isOn = false;
 
 	
 	public Remind(type currentType, Reminder currentReminder)
@@ -43,7 +44,7 @@ public class Remind {
 	public void checkTime(Date currentTime)
 	{
 		
-		System.out.println("DOES " + currentTime + " EQUAL " + reminderRemind.getTime() + "?");
+		//System.out.println("DOES " + currentTime + " EQUAL " + reminderRemind.getTime() + "?");
 		
 		if(		reminderRemind.getTime().getYear() == currentTime.getYear() && 
 				reminderRemind.getTime().getMonth() == currentTime.getMonth() &&
@@ -64,7 +65,7 @@ public class Remind {
 	public void start()
 	{
 			Scanner in = new Scanner(System.in);
-			
+			isOn = true;
 			
 			if(alarmType.equals("VIBRATION"))
 			{
@@ -86,53 +87,76 @@ public class Remind {
 			
 			System.out.println(reminderRemind.getName());
 			System.out.println(reminderRemind.getDescription());
-			System.out.println("Alarm will stop in 1 minute. Press s to stop, or t to snooze for 1 minute.");
+			System.out.println("Alarm will stop in 1 minute. Press 1 to stop, or 2 to snooze for 1 minute. (IF ALARM HAS ALREADY STOPPED, PRESS ANYKEY TO CONTINUE)");
 		
 			
 			
 			
 			
-			//int interval = 60000; // 60 sec
-			int interval = 1000; //TEST FOR 1 SECOND //IT WORKS
+			int interval = 60000; // 60 sec
+			
+			//int interval = 1000; //TEST FOR 1 SECOND //IT WORKS
 				Date timeToRun = new Date(System.currentTimeMillis() + interval);
 				Timer timer = new Timer();
-    
-			timer.schedule(new TimerTask() {
-            public void run() {
-           
-               stop();
-               in.close();
-               
-               
-			   return;				//Does this just return from the run(), hmmmmm, I dunno
-           }
-       }, timeToRun);
+				TimerTask task = new TimerTask() { 
+		            public void run() {
+		                
+		                stop();
+		                in.close();
+		                
+		                
+		                isOn = false;				//Does this just return from the run(), hmmmmm, I dunno
+		            }
+				
+				};
+				
+			timer.schedule(task, timeToRun);
 			
-			String choice = in.next();
+			
+			
+			
+			int choice = in.nextInt();
 			
 			System.out.println(choice);
 			
-			while(choice != "s" && choice != "t")
+			while(choice != 1 && choice != 2)
 			{
-				System.out.println("Press s to stop, or t to snooze for 1 minute.");
-				choice = in.next();
+				if(isOn != true)
+					break;
+				
+				System.out.println("Press 1 to stop, or 2 to snooze for 1 minute. (IF ALARM HAS ALREADY STOPPED, PRESS ANY NUMBERKEY TO CONTINUE)");
+				choice = in.nextInt();
 				
 				
 			}
 			
-			if(choice == "s")
+			//System.out.println("HERE" + isOn);
+			
+			if(!isOn)
 			{
+				return;
+				
+			}
+			
+			
+			if(choice == 1)
+			{
+				timer.cancel();
+				
 				stop();
 				
 				
 			} else
 			{
-				stop();
+				timer.cancel();
+				System.out.println("ALARM SNOOZED");
+				
+				
 				snooze();
 			}
 			
 			
-			in.close();
+			//in.close();
 	}
 	
 
@@ -146,7 +170,10 @@ public class Remind {
 	public void snooze()
 	{
 	
-		int interval = 60000; // 60 sec
+		//int interval = 60000; // 60 sec
+		isOn = false;
+		int interval = 5000; // 5 sec
+		
 				Date timeToRun = new Date(System.currentTimeMillis() + interval);
 				Timer timer = new Timer();
     
