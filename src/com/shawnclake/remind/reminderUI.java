@@ -63,10 +63,10 @@ public class reminderUI
 				
 				Remind addedRemind;
 				
-				System.out.println("Please enter the name of the reminder:");
+				System.out.println("Please enter the name of the reminder (one word):");
 				String entry1 = in.next();
 				
-				System.out.println("Please enter the description of the reminder:");
+				System.out.println("Please enter the description of the reminder(one word):");
 				String entry2 = in.next();
 				
 				System.out.println("Please enter the year of the reminder (Ex. 2016):");
@@ -139,7 +139,7 @@ public class reminderUI
 				listOfReminders.printReminders();
 				
 				System.out.println("");
-				System.out.println("Which reminder would you like to delete?");
+				System.out.println("Which reminder would you like to delete (enter numerical value)?");
 				
 				choice = in.nextInt();
 				
@@ -184,11 +184,12 @@ public class reminderUI
 						User addingUser = new User();
 						Auth authorize = new Auth();
 						addingUser = authorize.isUser(addUserName);
-						if(addingUser == null){
+						if(addingUser.getUsername().equals("")){
 							System.out.println("User does not exist.");
 						}
 						else{
 							rManage.addAuthorized(addingUser);
+							System.out.println("User added to group!");
 						}
 						continue;
 					case 2: //delete user from a group
@@ -198,11 +199,12 @@ public class reminderUI
 						User deletingUser = new User();
 						Auth dauthorize = new Auth();
 						deletingUser = dauthorize.isUser(delUserName);
-						if(deletingUser == null){
+						if(deletingUser.getUsername().equals("")){
 							System.out.println("User does not exist.");
 						}
 						else{
 							rManage.removeAuthorized(deletingUser);
+							System.out.println("User removed from group!");
 						}
 						
 						continue;
