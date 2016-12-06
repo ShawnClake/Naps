@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class UserGroup {
 
+	private String Name; //set to differentiate user groups
     private static ArrayList<User> users;
 
     public UserGroup()

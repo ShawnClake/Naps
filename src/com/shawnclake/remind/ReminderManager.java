@@ -1,3 +1,5 @@
+
+
 package com.shawnclake.remind;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,40 +31,19 @@ import com.shawnclake.auth.UserGroup;
 
 
 public class ReminderManager {
-    ArrayList<Remind> returnArray = null;
-    UserGroup ManagerGroup = new UserGroup();
+    //ArrayList<Remind> returnArray = null;
+    UserGroup ManagerGroup = new UserGroup(); //Managergroup is added simply to illustrate group functionality
+
 
 	
-	public ArrayList<Remind> getUsersReminders(User user) {
-		
-		int size = Reminders.getCount();
-		
-		for(int i =0; i < size; i++) {
-			returnArray.add(Reminders.getRemind(i));
-			
-		}
-		return returnArray;
-		
-	}
-	
-	public ArrayList<Remind> addReminderToUser (User user, Remind remind) {
-		Reminders.addReminder(remind); 
-		//now return all the reminders
-		int size = Reminders.getCount();
-		
-		for(int i =0; i < size; i++) {
-			returnArray.add(Reminders.getRemind(i));
-			
-		}
-		return returnArray;
-	}
-	
-	public void addReminderAll(User user, UserGroup UG, Remind reminder) {
+	public void addReminderAll( Remind remind, Reminders listOfReminders) {
 		//add reminder to all users in usergroup
 		int size = ManagerGroup.getCount();
+		User userInGroup = null;
 		
 		for (int i = 0;i < size; i++){
-			addReminderToUser(ManagerGroup.getUser(i), reminder);
+			userInGroup = ManagerGroup.getUser(i);
+			userInGroup.getReminders().addReminder(remind);
 		}
 		
 		
@@ -90,6 +71,11 @@ public class ReminderManager {
 		
 	}
 	
+	public void removeAuthorized(User firstUser){
+		
+		ManagerGroup.removeUser(firstUser);
+		
+	}
 	
 }
 

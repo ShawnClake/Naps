@@ -109,12 +109,13 @@ public class reminderUI			//Want to make this static, don't know how
 		boolean exit = false;
 		while(!exit)
 		{
-			System.out.println("Welcome to reminders. You have 4 options to choose from:");
+			System.out.println("Welcome to reminders. You have 5 options to choose from:");
 		
 			System.out.println("Show current reminders.                  1");
 			System.out.println("Add a reminder.                          2");
 			System.out.println("Delete a reminder.                       3");
-			System.out.println("Go back.                                 4");
+			System.out.println("Manage Group settings                    4");
+			System.out.println("Go back.                                 5");
 		
 			choice = in.nextInt();
 			
@@ -148,24 +149,18 @@ public class reminderUI			//Want to make this static, don't know how
 				
 				Date myDate = new Date();
 				//myDate.getTime();
-				
 				//System.out.println(myDate);
 				//TimeZone timezone = TimeZone.getTimeZone("Canada/Saskatchewan");	
 				//Calendar cal = Calendar.getInstance(timezone);
 				Calendar cal = Calendar.getInstance();
 				
-				
-				
 				Remind addedRemind;
-				
 				
 				System.out.println("Please enter the name of the reminder:");
 				String entry1 = in.next();
 				
 				System.out.println("Please enter the description of the reminder:");
 				String entry2 = in.next();
-					
-				   
 				
 				System.out.println("Please enter the year of the reminder (Ex. 2016):");
 				int entry3 = in.nextInt();
@@ -281,7 +276,127 @@ public class reminderUI			//Want to make this static, don't know how
 				
 				continue;
 			
-			case 4:
+			case 4: //added by Sam to be further modified by Jen
+				
+				boolean exitGroup = false;
+				while(!exitGroup)
+				{
+					System.out.println("Welcome to Group Settings. You have 4 options to choose from:");
+				
+					System.out.println("Add user to a group                           1");
+					System.out.println("Delete user from a group                      2");
+					System.out.println("Add group reminder                            3");
+					System.out.println("Go back to previous reminder menu             4");
+				
+					int groupchoice = in.nextInt();
+					
+					//int witticism = 0;
+					
+					while(groupchoice < 1 || groupchoice > 4)
+					{
+						System.out.println("I don't understand your input. " + witticisms);
+						//witticism++;
+						//if(witticism > 9)
+						//	witticism = 0;
+					}
+				
+				switch(groupchoice)
+				{
+					case 1: //add user to group
+						//take input for username, only one group used in this demo and it is set in reminderManager
+						
+						continue;
+					case 2: //delete user from a group
+						//take input for username  only one group used in this demo and it is set in reminderManager
+						
+						
+						continue;
+					case 3: //add group reminder
+						
+						Date groupmyDate = new Date();
+						//myDate.getTime();
+						//System.out.println(myDate);
+						//TimeZone timezone = TimeZone.getTimeZone("Canada/Saskatchewan");	
+						//Calendar cal = Calendar.getInstance(timezone);
+						Calendar groupcal = Calendar.getInstance();
+						
+						Remind groupaddedRemind;
+						
+						System.out.println("Please enter the name of the reminder:");
+						String groupentry1 = in.next();
+						
+						System.out.println("Please enter the description of the reminder:");
+						String groupentry2 = in.next();
+						
+						System.out.println("Please enter the year of the reminder (Ex. 2016):");
+						int groupentry3 = in.nextInt();
+						
+						System.out.println("Please enter the month of the reminder (Ex. 10 = October):");
+						int groupentry4 = in.nextInt();
+						
+						System.out.println("Please enter the day of the reminder:");
+						int groupentry5 = in.nextInt();
+						
+						System.out.println("Please enter the hour of the reminder (Ex. 13 = 1 PM):");
+						int groupentry6 = in.nextInt();
+						
+						System.out.println("Please enter the minute of the reminder:");
+						int groupentry7 = in.nextInt();
+						
+						System.out.println("Please enter the type of alarm (:");
+						System.out.println("Enter 1 for VIBRATION");
+						System.out.println("Enter 2 for SOUND");
+						System.out.println("Enter 3 for VIBRATION + SOUND");
+						
+						int groupentry8 = in.nextInt();
+						
+						while(groupentry8 < 1 && groupentry8 > 3)
+						{
+							System.out.println("Invalid entry.");
+							System.out.println("Enter a number from 1 - 3");
+							groupentry8 = in.nextInt();
+						}
+						
+						type groupcType = type.VIBRATION;
+						
+						switch(groupentry8)
+						{
+						case 1: groupcType = type.VIBRATION;
+								break;
+						
+						case 2: groupcType = type.SOUND;
+								break;
+						
+						case 3: groupcType = type.SOUND_VIBRATION;
+								break;
+						}
+							
+						groupcal.set(groupentry3, groupentry4 - 1, groupentry5, groupentry6, groupentry7, 0);
+						//System.out.println(cal.getTime());
+						
+						groupmyDate = groupcal.getTime();
+						//System.out.println(myDate);
+
+						
+						Reminder groupaddedReminder = new Reminder(groupentry1, groupmyDate, groupentry2);
+						
+						groupaddedRemind = new Remind(groupcType, groupaddedReminder);
+						
+						listOfReminders.addReminderAll(groupaddedRemind,listOfReminders);
+						
+						
+						continue;
+					case 4: //exit to previous menu
+						
+						
+						exitGroup = true;
+						continue;
+				}
+
+				}
+				
+				continue; //end of case 4
+			case 5:
 			
 				exit = true;
 				continue;

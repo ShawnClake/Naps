@@ -2,7 +2,7 @@ package com.shawnclake.remind;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Reminders {
+public class Reminders extends ReminderManager{
 
 	private static ArrayList<Remind> reminders;
 
@@ -55,7 +55,7 @@ public class Reminders {
 	
 	
 
-	public static void addReminder(Remind addedReminder)
+	public void addReminder(Remind addedReminder)
 	{
 		reminders.add(addedReminder);
 		
