@@ -24,7 +24,7 @@ public class Reminders extends ReminderManager{
 		
 	}
 	
-	public static Remind getRemind(int i)
+	public Remind getRemind(int i)
 	{
 		return reminders.get(i);
 		
@@ -32,7 +32,7 @@ public class Reminders extends ReminderManager{
 	}
 	
 	
-	public static int getCount()
+	public int getCount()
 	{
 		return reminders.size();
 		
