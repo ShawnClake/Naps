@@ -48,7 +48,7 @@ public class UI {
 		choice = choice.toLowerCase();
 		
 		//create the current sessions user
-		User current;
+		User current = new User();	//Had to initialize to empty user here
 		Auth authorize = new Auth();
 		
 		while((!choice.equals("login")) && (!choice.equals("register"))){
@@ -117,7 +117,7 @@ public class UI {
 		////////////////MAIN PROGRAM///////////////////////////////////////////////////////
 		///////Loop runs for the duration of the program
 		///////It will allow the user to use the reminders, fitbit, and displaying results
-		Reminders globalReminders = new Reminders();
+		//Reminders globalReminders = new Reminders();
 		while(choice != "quit"){
 			System.out.println("NAPS");
 			System.out.println("Select one of the following features:");
@@ -130,8 +130,8 @@ public class UI {
 			choice = choice.toLowerCase();
 			if(choice.equals("reminder")){
 				
-				reminderUI uii = new reminderUI();
-				uii.UI(globalReminders);
+				reminderUI uii = new reminderUI();	
+				reminderUI.UI(current.getReminders());
 				
 			}
 			//fitbit class
@@ -285,7 +285,7 @@ public class UI {
 				System.out.println("Please select either reminder, data, or quit...");
 			}
 			
-			globalReminders.check();//checks the time
+			current.getReminders().check();//checks the time
 			
 		}
 		in.close();
