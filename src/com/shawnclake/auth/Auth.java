@@ -34,6 +34,23 @@ public class Auth {
 
         return user;
     }
+    
+    public User isUser(String name){
+    	FileInput.openFile("src\\com\\shawnclake\\auth\\tests\\file.txt");
+        List<String> lines = FileInput.getRemainderOfFile();
+
+        User user = new User();
+
+        int i =0;
+        for(; i < lines.size(); i++)
+        {
+            String[] fields = lines.get(i).split("-");
+            if(name.equals(fields[1]))
+                return UserManager.readUser(Integer.parseInt(fields[0]));
+        }
+
+        return user;
+    }
 
     public User user()
     {

@@ -1,4 +1,5 @@
 package com.shawnclake.remind;
+import com.shawnclake.auth.Auth;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -14,17 +15,6 @@ public class reminderUI
 		
 	
 		String witticisms = "You almost had it there, champ.";
-		//witticisms[1] = "Your inability to follow simple instructions is astounding.";
-		//witticisms[2] = "Swing and a miss.";
-		//witticisms[3] = "How did you even get this far?";
-		//witticisms[4] = "I didn't think it was possible to have a single digit IQ, but you've done it. Congratulations.";
-		//witticisms[5] = "There are not enough crayons in the world to explain this to you.";
-		//witticisms[6] = "You're as useless as the 'g' in lasagna";
-		//witticisms[7] = "As a failure, you are a great success.";
-		//witticisms[8] = "You're so stupid, I could count your brain cells on one hand.";
-		//witticisms[9] = "What am I doing? You probably don't even know how to read.";
-		
-		
 		int choice;
 		
 		Scanner in = new Scanner(System.in);
@@ -69,10 +59,6 @@ public class reminderUI
 			case 2:
 				
 				Date myDate = new Date();
-				//myDate.getTime();
-				//System.out.println(myDate);
-				//TimeZone timezone = TimeZone.getTimeZone("Canada/Saskatchewan");	
-				//Calendar cal = Calendar.getInstance(timezone);
 				Calendar cal = Calendar.getInstance();
 				
 				Remind addedRemind;
@@ -193,7 +179,7 @@ public class reminderUI
 				{
 					case 1: //add user to group
 						//take input for username, only one group used in this demo and it is set in reminderManager
-						
+						System.out.println("");
 						continue;
 					case 2: //delete user from a group
 						//take input for username  only one group used in this demo and it is set in reminderManager
@@ -203,10 +189,6 @@ public class reminderUI
 					case 3: //add group reminder
 						
 						Date groupmyDate = new Date();
-						//myDate.getTime();
-						//System.out.println(myDate);
-						//TimeZone timezone = TimeZone.getTimeZone("Canada/Saskatchewan");	
-						//Calendar cal = Calendar.getInstance(timezone);
 						Calendar groupcal = Calendar.getInstance();
 						
 						Remind groupaddedRemind;
@@ -276,8 +258,6 @@ public class reminderUI
 						
 						continue;
 					case 4: //exit to previous menu
-						
-						
 						exitGroup = true;
 						continue;
 				}
@@ -289,17 +269,10 @@ public class reminderUI
 			
 				exit = true;
 				continue;
-				
-				
-				
-				
-				
+	
 	    }
 	}
-		
-		
-		
-}
 	
+}
 	
 }
