@@ -1,5 +1,7 @@
 package com.shawnclake.auth;
 
+import com.shawnclake.remind.Reminders;
+
 public class User
 {
 
@@ -9,6 +11,8 @@ public class User
     private String email;
     private String stats;
     private String settings;
+    
+    private Reminders reminders;
 
     public User()
     {
@@ -18,6 +22,7 @@ public class User
         email = "";
         stats = "{}";
         settings = "{}";
+        reminders = new Reminders();
     }
 
     public void setUser(int id, String username, String password, String email, String stats, String settings) {
@@ -87,6 +92,12 @@ public class User
 
     public void setSettings(String settings) {
         this.settings = settings;
+    }
+    
+    public Reminders getReminders(){
+    	
+    	return reminders;
+    
     }
 }
 
