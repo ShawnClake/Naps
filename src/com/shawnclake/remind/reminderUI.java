@@ -1,17 +1,4 @@
 package com.shawnclake.remind;
-// OK READ HERE JEN
-//
-//To call this function in the main, you must make a global variable listOfReminders to store the reminders in.
-//If the user wants to access the UI, You must make a reminderUI object and call the method UI on that object with the parameter listOfReminders (IE. REMINDERUIPBJECT.UI(listOfReminders);
-// OK, and also, you need to periodically call THE CALL METHOD (COMING SOON)!!
-//
-//
-//
-//
-
-
-
-
 
 import java.util.Calendar;
 import java.util.Date;
@@ -19,71 +6,8 @@ import java.util.Scanner;
 
 
 
-
-
-public class reminderUI			//Want to make this static, don't know how
-
-		//Passed by reference. Kinda confused how java does this. W/E make listOfReminders global then and just get rid of the parameter
+public class reminderUI			
 	{
-	
-	
-	//public static void main(String[] args) {
-		
-		
-		
-		//Reminders globalReminders = new Reminders();
-		
-		
-		
-		
-		//UI(globalReminders);
-
-		//globalReminders.check();
-		
-		//test();
-		
-		
-		//System.out.println("STOPPED");
-		
-		
-		
-	//}
-	
-	
-	private static void test() {
-		
-		Reminders globalReminders = new Reminders();
-		
-		Date myDate = new Date();
-		
-		for(int i = 0; i < 5; i++)
-		{
-			myDate = new Date();
-			
-			myDate.setMinutes(myDate.getMinutes() + i);
-			
-			Reminder addedReminder = new Reminder("bibbi" + i, myDate, "VIVIVIVIV" + i);
-			
-			type gsrgsr = type.SOUND;
-			
-			Remind addedRemind = new Remind(gsrgsr, addedReminder);
-			
-			globalReminders.addReminder(addedRemind);
-			
-			
-		}
-		
-		
-		globalReminders.printReminders();
-		
-		
-		globalReminders.check();
-		
-		
-		
-		
-	}
-
 
 	public static void UI(Reminders listOfReminders)
 	{
@@ -119,14 +43,11 @@ public class reminderUI			//Want to make this static, don't know how
 		
 			choice = in.nextInt();
 			
-			//int witticism = 0;
-			
-			while(choice < 1 || choice > 4)
+			while(choice < 1 || choice > 5)
 			{
-				System.out.println("I don't understand your input. " + witticisms);
-				//witticism++;
-				//if(witticism > 9)
-				//	witticism = 0;
+				System.out.println("Incorrect selection.");
+				System.out.println("Please chose either 1, 2, 3, 4, or 5: ");
+				choice = in.nextInt();
 			}
 		
 		switch(choice)
@@ -207,45 +128,16 @@ public class reminderUI			//Want to make this static, don't know how
 				
 				}
 				
-				
-				
-				
-				
 				cal.set(entry3, entry4 - 1, entry5, entry6, entry7, 0);
-				//System.out.println(cal.getTime());
-				
 				myDate = cal.getTime();
-				//System.out.println(myDate);
-				
-				
-				
-				
 				
 				
 				Reminder addedReminder = new Reminder(entry1, myDate, entry2);
-				
 				addedRemind = new Remind(cType, addedReminder);
 				
 				
-				
 				listOfReminders.addReminder(addedRemind);
-				
-				
-				//for(int i = 0; i < listOfReminders.getCount(); i++)
-				//{
-				//	System.out.println("Reminder 1: " + listOfReminders.getRemind(i).getReminder().getName());
-				//	System.out.println("Description: " + listOfReminders.getRemind(i).getReminder().getDescription());
-				//	System.out.println("Date: " + listOfReminders.getRemind(i).getReminder().getTime());
-				//	System.out.println("");
-					
-					
-					
-				//}
-				
-				listOfReminders.printReminders();
-				//System.out.println(myDate);	//Test
-				
-				
+				listOfReminders.printReminders();		
 				
 				continue;
 			
@@ -276,7 +168,7 @@ public class reminderUI			//Want to make this static, don't know how
 				
 				continue;
 			
-			case 4: //added by Sam to be further modified by Jen
+			case 4:
 				
 				boolean exitGroup = false;
 				while(!exitGroup)
@@ -290,14 +182,11 @@ public class reminderUI			//Want to make this static, don't know how
 				
 					int groupchoice = in.nextInt();
 					
-					//int witticism = 0;
-					
 					while(groupchoice < 1 || groupchoice > 4)
 					{
-						System.out.println("I don't understand your input. " + witticisms);
-						//witticism++;
-						//if(witticism > 9)
-						//	witticism = 0;
+						System.out.println("Incorrect selection.");
+						System.out.println("Please chose either 1, 2, 3, or 4: ");
+						groupchoice = in.nextInt();
 					}
 				
 				switch(groupchoice)
