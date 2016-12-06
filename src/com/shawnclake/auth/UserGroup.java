@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class UserGroup {
 
-    private ArrayList<User> users;
+    private static ArrayList<User> users;
 
     public UserGroup()
     {
@@ -15,6 +15,16 @@ public class UserGroup {
     {
         this.users.add(user);
     }
+    
+    public User getUser(int i)
+    {
+		return users.get(i);
+    }
+    
+	public int getCount()
+	{
+		return users.size();
+	}
 
     public boolean isInGroup(User user)
     {

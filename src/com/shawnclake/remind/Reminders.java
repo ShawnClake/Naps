@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Reminders {
 
-	private ArrayList<Remind> reminders;
+	private static ArrayList<Remind> reminders;
 
 	
 	public Reminders()
@@ -24,7 +24,7 @@ public class Reminders {
 		
 	}
 	
-	Remind getRemind(int i)
+	public static Remind getRemind(int i)
 	{
 		return reminders.get(i);
 		
@@ -32,7 +32,7 @@ public class Reminders {
 	}
 	
 	
-	public int getCount()
+	public static int getCount()
 	{
 		return reminders.size();
 		
@@ -55,7 +55,7 @@ public class Reminders {
 	
 	
 
-	public void addReminder(Remind addedReminder)
+	public static void addReminder(Remind addedReminder)
 	{
 		reminders.add(addedReminder);
 		

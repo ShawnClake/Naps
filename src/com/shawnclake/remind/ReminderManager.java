@@ -1,10 +1,13 @@
 package com.shawnclake.remind;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import com.shawnclake.auth.User;
+import com.shawnclake.auth.UserGroup;
+
 /**
  * 
  * 
@@ -26,34 +29,68 @@ import com.shawnclake.auth.User;
 
 
 public class ReminderManager {
+    ArrayList<Remind> returnArray = null;
+    UserGroup ManagerGroup = new UserGroup();
 
 	
-	public Reminders getUsersReminders(User user) {
+	public ArrayList<Remind> getUsersReminders(User user) {
 		
-		//Waiting for Uysie as he is reformatting how reminders are stored
-		return Ders;
+		int size = Reminders.getCount();
+		
+		for(int i =0; i < size; i++) {
+			returnArray.add(Reminders.getRemind(i));
+			
+		}
+		return returnArray;
+		
 	}
 	
-	public Reminders addReminderToUser (User user, Reminder reminder) {
+	public ArrayList<Remind> addReminderToUser (User user, Remind remind) {
+		Reminders.addReminder(remind); 
+		//now return all the reminders
+		int size = Reminders.getCount();
 		
-		Reminders.add(Reminder);
-		
-		return Ders;
+		for(int i =0; i < size; i++) {
+			returnArray.add(Reminders.getRemind(i));
+			
+		}
+		return returnArray;
 	}
 	
-	public void addReminderAll(User user, UserGroup UG, Reminder reminder) {
-		//Waiting for Shawn to finish the UserGroup class
+	public void addReminderAll(User user, UserGroup UG, Remind reminder) {
+		//add reminder to all users in usergroup
+		int size = ManagerGroup.getCount();
+		
+		for (int i = 0;i < size; i++){
+			addReminderToUser(ManagerGroup.getUser(i), reminder);
+		}
+		
 		
 	}
 	
 	private boolean isAuthorized(User firstUser, User secondUser){
 		
+		boolean checkone = ManagerGroup.isInGroup(firstUser);
 		
-		
+		boolean checktwo = ManagerGroup.isInGroup(secondUser);
+
+		if((checkone == false)||(checktwo == false)){
 		return false;
-		
+		}
+		else {
+			return true;
+		}
 		
 	}
+	
+	public void addAuthorized(User firstUser, User secondUser){
+				
+		ManagerGroup.addUser(firstUser);
+		ManagerGroup.addUser(secondUser);		
+		
+	}
+	
+	
 }
 
 
