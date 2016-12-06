@@ -64,10 +64,9 @@ public class ReminderManager {
 		
 	}
 	
-	public void addAuthorized(User firstUser, User secondUser){
+	public void addAuthorized(User firstUser){
 				
-		ManagerGroup.addUser(firstUser);
-		ManagerGroup.addUser(secondUser);		
+		ManagerGroup.addUser(firstUser);		
 		
 	}
 	

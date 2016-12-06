@@ -1,6 +1,6 @@
 package com.shawnclake.remind;
 import com.shawnclake.auth.Auth;
-
+import com.shawnclake.auth.User;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -174,16 +174,36 @@ public class reminderUI
 						System.out.println("Please chose either 1, 2, 3, or 4: ");
 						groupchoice = in.nextInt();
 					}
-				
+				ReminderManager rManage = new ReminderManager();
 				switch(groupchoice)
 				{
 					case 1: //add user to group
 						//take input for username, only one group used in this demo and it is set in reminderManager
-						System.out.println("");
+						System.out.println("Enter the username of the user you would like to add (case sensitive):");
+						String addUserName = in.next();
+						User addingUser = new User();
+						Auth authorize = new Auth();
+						addingUser = authorize.isUser(addUserName);
+						if(addingUser == null){
+							System.out.println("User does not exist.");
+						}
+						else{
+							rManage.addAuthorized(addingUser);
+						}
 						continue;
 					case 2: //delete user from a group
 						//take input for username  only one group used in this demo and it is set in reminderManager
-						
+						System.out.println("Enter the username of the user you would like to delete (case sensitive):");
+						String delUserName = in.next();
+						User deletingUser = new User();
+						Auth dauthorize = new Auth();
+						deletingUser = dauthorize.isUser(delUserName);
+						if(deletingUser == null){
+							System.out.println("User does not exist.");
+						}
+						else{
+							rManage.removeAuthorized(deletingUser);
+						}
 						
 						continue;
 					case 3: //add group reminder
